@@ -1,4 +1,5 @@
 import { Review } from "./review";
+import { StarGenerator } from "./starGenerator";
 
 const header_style = {
   fontFamily: "'Mulish', sans-serif",
@@ -23,6 +24,7 @@ const review_style = {
   display: "flex",
   overflowX: "auto",
   overflowY: "hidden",
+  boxShadow: "20px 20px 50px grey",
   paddingLeft: "140px",
 };
 const icon = {
@@ -32,11 +34,59 @@ const icon = {
   justifyContent: "flex-end",
 };
 export const FifthPage = () => {
+  const reviews = [
+    {
+      url: "/amy.png",
+      name: "Amy Klassen",
+      content:
+        "Give everyone you work with—inside and outside your emoji, keep conversations focused in channels, and simplify all your communication into one place.",
+      count: 5,
+    },
+    {
+      url: "/jane.png",
+      name: "Jane Cooper",
+      content:
+        "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      count: 5,
+    },
+    {
+      url: "/eleanor.png",
+      name: "Eleanor Pena",
+      content:
+        "Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.",
+      count: 5,
+    },
+    {
+      url: "/klassen.png",
+      name: "Amy Klassen",
+      content:
+        "Give everyone you work with—inside and outside your emoji, keep conversations focused in channels, and simplify all your communication into one place.",
+      count: 5,
+    },
+    {
+      url: "/amy.png",
+      name: "Amy Klassen",
+      content:
+        "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      count: 5,
+    },
+  ];
   return (
     <div style={style}>
       <h1 style={header_style}>What people say about us</h1>
       <div style={review_style}>
-        <Review
+        {reviews.map((value, index) => {
+          return (
+            <Review
+              count={value.count}
+              name={value.name}
+              profileURL={value.url}
+              content={value.content}
+              key={index}
+            />
+          );
+        })}
+        {/* {/* <Review
           profileURL="/amy.png"
           name="Amy Klassen"
           content="Give everyone you work with—inside and outside your emoji, keep conversations focused in channels, and simplify all your communication into one place."
@@ -64,7 +114,8 @@ export const FifthPage = () => {
           name="Amy Klassen"
           content="
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-        />
+          count={5}
+        /> */}
       </div>
       <div style={icon}>
         <svg
