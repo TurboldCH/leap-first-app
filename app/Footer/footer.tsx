@@ -27,7 +27,7 @@ const container = {
   margin: "0px",
   marginLeft: "auto",
   marginRight: "auto",
-  maxWidth: "1440px",
+  maxWidth: "1155px",
   position: "relative",
   padding: "0px",
   justifyContent: "center",
@@ -47,7 +47,7 @@ export const Footer = () => {
           style={{
             display: "flex",
             flexDirection: "column", 
-            alignItems: "center",
+            alignContent: "left",
           }}
           item
           xs={3}
@@ -62,7 +62,7 @@ export const Footer = () => {
           <Facebook />
           <Twitter />
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={1.5}>
           <Content
             header="Use cases"
             p1="UI Design"
@@ -84,7 +84,7 @@ export const Footer = () => {
             p6="Why I Love Figma"
           />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={3}>
           <Content
             header="Resources"
             p1="Community Resources Hub"
@@ -95,7 +95,7 @@ export const Footer = () => {
             p6="Education"
           />
         </Grid>
-        <Grid item xs={3.5}>
+        <Grid item xs={3}>
           <div style={email}>
             <h1 style={{ fontWeight: "600", fontSize: "18px" }}>
               Subscribe to our newsletter
