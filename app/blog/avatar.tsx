@@ -4,6 +4,7 @@ const style = {
     display: "flex",
     alignItems: "center",
     color: "#6D7D8B",
+    paddingTop: "40px",
 }
 
 export const Avatar = ({

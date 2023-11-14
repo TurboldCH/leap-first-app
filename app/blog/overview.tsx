@@ -2,6 +2,7 @@ const content_style = {
   display: "flex",
   flexDirection: "column",
   gap: "21px",
+  paddingTop: "21px",
 };
 const header_style = {
   fontFamily: "'Cabin', sans-serif",
@@ -11,12 +12,13 @@ const header_style = {
   width: "330px",
 };
 const content_p = {
-  fontFamily: "'Mulish', sans-seris",
-  fontWeight: "400",
+  fontFamily: "'Mulish', sans-serif",
+  fontWeight: "600",
   fontSize: "14px",
   color: "#25313C",
   width: "318px",
   lineHeight: "21.084px",
+  height: "84px",
 };
 
 export const Overview = ({

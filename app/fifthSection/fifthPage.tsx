@@ -86,36 +86,6 @@ export const FifthPage = () => {
             />
           );
         })}
-        {/* {/* <Review
-          profileURL="/amy.png"
-          name="Amy Klassen"
-          content="Give everyone you work with—inside and outside your emoji, keep conversations focused in channels, and simplify all your communication into one place."
-        />
-        <Review
-          profileURL="/jane.png"
-          name="Jane Cooper"
-          content="
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-        />
-        <Review
-          profileURL="/eleanor.png"
-          name="Eleanor Pena"
-          content="
-          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum."
-        />
-        <Review
-          profileURL="/klassen.png"
-          name="Amy Klassen"
-          content="
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-        />
-        <Review
-          profileURL="/klassen.png"
-          name="Amy Klassen"
-          content="
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-          count={5}
-        /> */}
       </div>
       <div style={icon}>
         <svg

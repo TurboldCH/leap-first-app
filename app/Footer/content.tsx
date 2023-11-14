@@ -15,13 +15,15 @@ export const Content = ({
   p5: string;
   p6: string;
 }) => {
-  return <div>
-    <p>{header}</p>
-    <p>{p1}</p>
-    <p>{p2}</p>
-    <p>{p3}</p>
-    <p>{p4}</p>
-    <p>{p5}</p>
-    <p>{p6}</p>
-  </div>;
+  return (
+    <div style={{ display: "flex", flexDirection: "column", flexBasis:"auto" }}>
+      <p style={{ paddingBottom: "33px" }}>{header}</p>
+      <p>{p1}</p>
+      <p>{p2}</p>
+      <p>{p3}</p>
+      <p>{p4}</p>
+      <p>{p5}</p>
+      <p>{p6}</p>
+    </div>
+  );
 };
