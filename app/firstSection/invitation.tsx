@@ -18,7 +18,8 @@ export const Invitation = () => {
       <Content
         header="Instant collaborations for remote teams"
         content="All in one for your remote team chats, collaboration and track projects"
-        color="white"
+        headerColor="#FFF"
+        contentColor="#FFF"
         headerWidth="514px"
         headerWeight="700"
         contentWidth="323px"

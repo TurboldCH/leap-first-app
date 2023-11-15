@@ -13,7 +13,7 @@ const header_style = {
 };
 const content_p = {
   fontFamily: "'Mulish', sans-serif",
-  fontWeight: "600",
+  fontWeight: "400",
   fontSize: "14px",
   color: "#25313C",
   width: "318px",

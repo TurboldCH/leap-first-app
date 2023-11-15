@@ -14,7 +14,8 @@ export const ThirdPageContent = () => {
       <Content
         header="Simple task management"
         content="Give everyone you work with—inside and outside your company—a more productive way to stay in sync. Respond faster with emoji, keep conversations focused in channels, and simplify all your communication into one place."
-        color="black"
+        headerColor="black"
+        contentColor="black"
         headerWidth="398px"
         contentWidth="465px"
         gap="30px"

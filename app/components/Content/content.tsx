@@ -5,9 +5,10 @@ const content_style = {
 const header_style = {
   fontFamily: "'Mulish', sans-serif",
   fontSize: "48px",
-  fontWeight: "700",
+  fontWeight: "800",
 };
 const content_p = {
+  fontFamily: "'Mulish', sans-serif",
   fontWeight: "400",
   fontSize: "18px",
 };
@@ -15,22 +16,28 @@ const content_p = {
 export const Content = ({
   header,
   content,
-  color,
+  headerColor,
+  contentColor,
   headerWidth,
   contentWidth,
   gap,
 }: {
   header: string;
   content: string;
-  color: string;
+  headerColor: string;
+  contentColor: string;
   headerWidth: string;
   contentWidth: string;
   gap: string;
 }) => {
   return (
-    <div style={{ ...content_style, color: color, gap: gap }}>
-      <h1 style={{ ...header_style, width: headerWidth }}>{header}</h1>
-      <p style={{ ...content_p, width: contentWidth }}>{content}</p>
+    <div style={{ ...content_style, gap: gap }}>
+      <h1 style={{ ...header_style, width: headerWidth, color: headerColor }}>
+        {header}
+      </h1>
+      <p style={{ ...content_p, width: contentWidth, color: contentColor }}>
+        {content}
+      </p>
     </div>
   );
 };
