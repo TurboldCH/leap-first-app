@@ -3,6 +3,7 @@ import { Navigation } from "../components/Navigation/navigation";
 import { Content } from "../components/Content/content";
 import { Post } from "./post";
 import { Footer } from "../Footer/footer";
+import { Button } from "../components/Button";
 
 const style = {
   background: "var(--HP-design-color, #F5F7FA)",
@@ -22,20 +23,25 @@ const container = {
 };
 const posts_style = {
   paddingTop: "69px",
+  paddingBottom: "40px",
   display: "flex",
   justifyContent: "center",
   gap: "33px",
   flexWrap: "wrap",
 };
 
+const content = {
+  padding: "96px 0px 64px 0px",
+};
+
 export default function RootLayout() {
   const posts = [
     {
-      url: "/blog1.png",
+      url: "/blog/blog1.png",
       header: "The Emotional Toll of Being in UX",
       content:
         "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-      avatar: "/wade.png",
+      avatar: "/blog/wade.png",
       name: "Wade Warren",
       date: "2nd January,2022",
     },
@@ -117,14 +123,17 @@ export default function RootLayout() {
     <div style={style}>
       <div style={container}>
         <Navigation type="blog" />
-        <Content
-          header="Blog posts"
-          content="Our latest updates and blogs about managing your team"
-          color="black"
-          headerWidth="300px"
-          contentWidth="480px"
-          gap="20px"
-        />
+        <div style={content}>
+          <Content
+            header="Blog posts"
+            content="Our latest updates and blogs about managing your team"
+            headerColor="black"
+            contentColor="#6D7D8B"
+            headerWidth="300px"
+            contentWidth="480px"
+            gap="20px"
+          />
+        </div>
         <div style={posts_style}>
           {posts.map((value, index) => {
             return (
@@ -139,6 +148,9 @@ export default function RootLayout() {
               />
             );
           })}
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button type="next" text="Next" />
         </div>
       </div>
       <Footer />

@@ -5,6 +5,10 @@ const style = {
     alignItems: "center",
     color: "#6D7D8B",
     paddingTop: "40px",
+    fontFamily: "'Mulish', sans-serif",
+    fontSize: "12px",
+    fontWeight: "300",
+    lineHeight: "18px",
 }
 
 export const Avatar = ({
