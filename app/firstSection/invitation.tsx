@@ -2,19 +2,9 @@ import { Content } from "../components/Content/content";
 import { EmailInput } from "./emailinput";
 import { Button } from "../components/Button";
 
-const content = {
-  paddingTop: "0px",
-};
-
-const emailinput = {
-  paddingTop: "70px",
-  display: "flex",
-  gap: "14px",
-};
-
 export const Invitation = () => {
   return (
-    <div style={content}>
+    <div style={{ paddingTop: "0px" }}>
       <Content
         header="Instant collaborations for remote teams"
         content="All in one for your remote team chats, collaboration and track projects"
@@ -26,7 +16,13 @@ export const Invitation = () => {
         contentWeight="400"
         gap="25px"
       />
-      <div style={emailinput}>
+      <div
+        style={{
+          paddingTop: "70px",
+          display: "flex",
+          gap: "14px",
+        }}
+      >
         <EmailInput />
         <Button text="Get Early Access" type="blue" />
       </div>

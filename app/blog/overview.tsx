@@ -1,17 +1,19 @@
-const content_style = {
+import { styled } from "@mui/material";
+
+const ContentStyle = styled("div")({
   display: "flex",
   flexDirection: "column",
   gap: "21px",
   paddingTop: "21px",
-};
-const header_style = {
+});
+const HeaderStyle = styled("div")({
   fontFamily: "'Cabin', sans-serif",
   fontSize: "24px",
   fontWeight: "500",
   color: "#25313C",
   width: "330px",
-};
-const content_p = {
+});
+const ParagraphStyle = styled("div")({
   fontFamily: "'Mulish', sans-serif",
   fontWeight: "400",
   fontSize: "14px",
@@ -19,7 +21,7 @@ const content_p = {
   width: "318px",
   lineHeight: "21.084px",
   height: "84px",
-};
+});
 
 export const Overview = ({
   header,
@@ -29,9 +31,13 @@ export const Overview = ({
   content: string;
 }) => {
   return (
-    <div style={{ ...content_style }}>
-      <h1 style={{ ...header_style }}>{header}</h1>
-      <p style={{ ...content_p }}>{content}</p>
-    </div>
+    <ContentStyle>
+      <HeaderStyle>
+        <div>{header}</div>
+      </HeaderStyle>
+      <ParagraphStyle>
+        <div>{content}</div>
+      </ParagraphStyle>
+    </ContentStyle>
   );
 };

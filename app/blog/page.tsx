@@ -4,15 +4,16 @@ import { Content } from "../components/Content/content";
 import { Post } from "./post";
 import { Footer } from "../Footer/footer";
 import { Button } from "../components/Button";
+import { styled } from "@mui/material";
 
-const style = {
+const DivStyle = styled("div")({
   background: "var(--HP-design-color, #F5F7FA)",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-};
-const container = {
+});
+const ContainerStyle = styled('div')({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
@@ -20,19 +21,19 @@ const container = {
   maxWidth: "1155px",
   position: "relative",
   paddingBottom: "140px",
-};
-const posts_style = {
+});
+const Posts_style = styled("div")({
   paddingTop: "69px",
   paddingBottom: "40px",
   display: "flex",
   justifyContent: "center",
   gap: "33px",
   flexWrap: "wrap",
-};
+});
 
-const content = {
+const ContentStyle = styled("div")({
   padding: "96px 0px 64px 0px",
-};
+});
 
 export default function RootLayout() {
   const posts = [
@@ -120,21 +121,23 @@ export default function RootLayout() {
   ];
 
   return (
-    <div style={style}>
-      <div style={container}>
+    <DivStyle>
+      <ContainerStyle>
         <Navigation type="blog" />
-        <div style={content}>
+        <ContentStyle>
           <Content
             header="Blog posts"
             content="Our latest updates and blogs about managing your team"
             headerColor="black"
             contentColor="#6D7D8B"
+            headerWeight="800"
             headerWidth="300px"
             contentWidth="480px"
+            contentWeight="500"
             gap="20px"
           />
-        </div>
-        <div style={posts_style}>
+        </ContentStyle>
+        <Posts_style>
           {posts.map((value, index) => {
             return (
               <Post
@@ -148,12 +151,12 @@ export default function RootLayout() {
               />
             );
           })}
-        </div>
+        </Posts_style>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button type="next" text="Next" />
         </div>
-      </div>
+      </ContainerStyle>
       <Footer />
-    </div>
+    </DivStyle>
   );
 }

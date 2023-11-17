@@ -1,19 +1,20 @@
-const learnmore = {
-    color: "var(--bluey, #4da0fd)",
-    fontFamily: "'Mulish', sans-serif",
-    fontSize: "16px",
-    fontWeight: "350",
-    lineHeight: "175.7%",
-    textDecorationLine: "underline",
-    border: "none",
-    background: "transparent",
-    display: "flex",
-    alignItems: "center",
-}
 
 export const Learnmore = () => {
   return (
-    <button style={learnmore}>
+    <button
+      style={{
+        color: "var(--bluey, #4da0fd)",
+        fontFamily: "'Mulish', sans-serif",
+        fontSize: "16px",
+        fontWeight: "350",
+        lineHeight: "175.7%",
+        textDecorationLine: "underline",
+        border: "none",
+        background: "transparent",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       Learn More
       <svg
         xmlns="http://www.w3.org/2000/svg"

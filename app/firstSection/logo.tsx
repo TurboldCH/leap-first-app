@@ -1,4 +1,4 @@
-export const Logo = ({ color }: { color: string }) => {
+export const Logo = ({ color }: { color?: string }) => {
   if (color === "black") {
     return (
       <svg
