@@ -11,28 +11,25 @@ const style = {
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-}
+};
 
 const container = {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
-  margin: "0, auto",
-  maxWidth: "1155px",
+  margin: "0px, auto",
+  maxWidth: "1440px",
   position: "relative",
-  paddingBottom: "140px",
 };
 export default function RootLayout() {
   return (
     <div style={style}>
-      <div style={container}>
-        <Firstpage />
-        <Secondpage />
-        <Thirdpage />
-        <FourthPage />
-        <FifthPage />
-        <Footer />
-      </div>
+      <Firstpage />
+      <Secondpage />
+      <Thirdpage />
+      <FourthPage />
+      <FifthPage />
+      <Footer />
     </div>
   );
 }

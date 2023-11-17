@@ -7,6 +7,7 @@ import { FooterEmail } from "./footerEmail";
 import { Box, Grid } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
+import { Container } from "../components/container";
 
 const style = {
   display: " flex",
@@ -24,7 +25,7 @@ const style = {
 
 const container = {
   display: "flex",
-  margin: "0px",
+  marginTop: "0px",
   marginLeft: "auto",
   marginRight: "auto",
   maxWidth: "1155px",
@@ -42,124 +43,68 @@ const email = {
 export const Footer = () => {
   return (
     <Box style={style} sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2} style={container}>
-        <Grid
-          style={{
-            display: "flex",
-            flexDirection: "column", 
-            alignContent: "left",
-          }}
-          item
-          xs={3}
-        >
-          <div style={{ paddingBottom: "29.5px" }}>
-            <Logo color="white" />
-          </div>
-          <Insta />
-          <Facebook />
-          <Twitter />
-          <Insta />
-          <Facebook />
-          <Twitter />
+        <Grid container spacing={2} style={container}>
+          <Grid
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "left",
+            }}
+            item
+            xs={3}
+          >
+            <div style={{ paddingBottom: "29.5px" }}>
+              <Logo color="white" />
+            </div>
+            <Insta />
+            <Facebook />
+            <Twitter />
+            <Insta />
+            <Facebook />
+            <Twitter />
+          </Grid>
+          <Grid item xs={1.5}>
+            <Content
+              header="Use cases"
+              p1="UI Design"
+              p2="UX Design"
+              p3="Prototyping"
+              p4="UI Design"
+              p5="UX Design"
+              p6="Prototyping"
+            />
+          </Grid>
+          <Grid item xs={1.5}>
+            <Content
+              header="Explore"
+              p1="Figma"
+              p2="Customers"
+              p3="Why I Love Figma"
+              p4="Figma"
+              p5="Customers"
+              p6="Why I Love Figma"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <Content
+              header="Resources"
+              p1="Community Resources Hub"
+              p2="Support"
+              p3="Education"
+              p4="Community Resources Hub"
+              p5="Support"
+              p6="Education"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <div style={email}>
+              <h1 style={{ fontWeight: "600", fontSize: "18px" }}>
+                Subscribe to our newsletter
+              </h1>
+              <FooterEmail />
+            </div>
+          </Grid>
         </Grid>
-        <Grid item xs={1.5}>
-          <Content
-            header="Use cases"
-            p1="UI Design"
-            p2="UX Design"
-            p3="Prototyping"
-            p4="UI Design"
-            p5="UX Design"
-            p6="Prototyping"
-          />
-        </Grid>
-        <Grid item xs={1.5}>
-          <Content
-            header="Explore"
-            p1="Figma"
-            p2="Customers"
-            p3="Why I Love Figma"
-            p4="Figma"
-            p5="Customers"
-            p6="Why I Love Figma"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <Content
-            header="Resources"
-            p1="Community Resources Hub"
-            p2="Support"
-            p3="Education"
-            p4="Community Resources Hub"
-            p5="Support"
-            p6="Education"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <div style={email}>
-            <h1 style={{ fontWeight: "600", fontSize: "18px" }}>
-              Subscribe to our newsletter
-            </h1>
-            <FooterEmail />
-          </div>
-        </Grid>
-      </Grid>
     </Box>
-    // <div style={style}>
-    //   <div style={container}>
-    //     <div style={logos}>
-    //       <div
-    //         style={{
-    //           paddingBottom: "38px",
-    //           display: "flex",
-    //           alignItems: "center",
-    //         }}
-    //       >
-    //         <Logo color="white" />
-    //       </div>
-    //       <Insta />
-    //       <Facebook />
-    //       <Twitter />
-    //       <Insta />
-    //       <Facebook />
-    //       <Twitter />
-    //     </div>
-    //     <div style={content}>
-    //       <Content
-    //         header="Use cases"
-    //         p1="UI Design"
-    //         p2="UX Design"
-    //         p3="Prototyping"
-    //         p4="UI Design"
-    //         p5="UX Design"
-    //         p6="Prototyping"
-    //       />
-    //       <Content
-    //         header="Explore"
-    //         p1="Figma"
-    //         p2="Customers"
-    //         p3="Why I Love Figma"
-    //         p4="Figma"
-    //         p5="Customers"
-    //         p6="Why I Love Figma"
-    //       />
-    //       <Content
-    //         header="Resources"
-    //         p1="Community Resources Hub"
-    //         p2="Support"
-    //         p3="Education"
-    //         p4="Community Resources Hub"
-    //         p5="Support"
-    //         p6="Education"
-    //       />
-    //     </div>
-    //     <div style={email}>
-    //       <h1 style={{ fontWeight: "600", fontSize: "18px" }}>
-    //         Subscribe to our newsletter
-    //       </h1>
-    //       <FooterEmail />
-    //     </div>
-    //   </div>
-    // </div>
   );
 };

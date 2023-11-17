@@ -1,14 +1,14 @@
 import { Invitation } from "./invitation";
 import { Navigation } from "../components/Navigation/navigation";
 import Image from "next/image";
+import { Container } from "../components/container";
 
 const firstpage = {
-  width: "100wh",
+  width: "auto",
   height: "100vh",
-  position: "relative",
-  padding: "22px 135px 0 135px",
+  display: "flex",
+  flexDirection: "column",
 };
-
 const background_img = {
   position: "absolute",
   top: "0",
@@ -21,7 +21,7 @@ const background_img = {
 
 export const Firstpage = () => {
   return (
-    <div style={firstpage}>
+    <div id="firstPage" style={firstpage}>
       <Image
         src="/firstImage.png"
         alt="Background Image"
@@ -29,8 +29,10 @@ export const Firstpage = () => {
         objectFit="cover"
         style={background_img}
       />
-      <Navigation type="grey"/>
-      <Invitation/>
+      <Navigation type="grey" />
+      <Container>
+        <Invitation />
+      </Container>
     </div>
   );
 };
