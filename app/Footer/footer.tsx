@@ -7,7 +7,7 @@ import { FooterEmail } from "./footerEmail";
 import { Box, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const style = {
+const MyBox = styled(Box)({
   display: " flex",
   width: "100%",
   backgroundColor: "#252B3B",
@@ -19,7 +19,7 @@ const style = {
   justifyContent: "center",
   alignItems: "center",
   paddingBottom: "55px",
-};
+});
 
 const MyGrid = styled(Grid)({
   display: "flex",
@@ -33,7 +33,7 @@ const MyGrid = styled(Grid)({
   boxShadow: "none",
 });
 
-const EmailStyle = styled('div')({
+const EmailStyle = styled("div")({
   display: "flex",
   flexDirection: "column",
   gap: "17px",
@@ -41,7 +41,7 @@ const EmailStyle = styled('div')({
 
 export const Footer = () => {
   return (
-    <Box style={style} sx={{ flexGrow: 1 }}>
+    <MyBox sx={{ flexGrow: 1 }}>
       <MyGrid container spacing={2}>
         <Grid
           style={{
@@ -97,13 +97,13 @@ export const Footer = () => {
         </Grid>
         <Grid item xs={3}>
           <EmailStyle>
-              <h1 style={{ fontWeight: "600", fontSize: "18px" }}>
-                Subscribe to our newsletter
-              </h1>
-              <FooterEmail />
+            <h1 style={{ fontWeight: "600", fontSize: "18px" }}>
+              Subscribe to our newsletter
+            </h1>
+            <FooterEmail />
           </EmailStyle>
         </Grid>
       </MyGrid>
-    </Box>
+    </MyBox>
   );
 };

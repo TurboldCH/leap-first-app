@@ -1,15 +1,16 @@
+import { styled } from "@mui/material";
 import Image from "next/image";
 
-const style = {
-    display: "flex",
-    alignItems: "center",
-    color: "#6D7D8B",
-    paddingTop: "40px",
-    fontFamily: "'Mulish', sans-serif",
-    fontSize: "12px",
-    fontWeight: "300",
-    lineHeight: "18px",
-}
+const DivStyle = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  color: "#6D7D8B",
+  paddingTop: "40px",
+  fontFamily: "'Mulish', sans-serif",
+  fontSize: "12px",
+  fontWeight: "300",
+  lineHeight: "18px",
+});
 
 export const Avatar = ({
   url,
@@ -21,7 +22,7 @@ export const Avatar = ({
   date: string;
 }) => {
   return (
-    <div style={style}>
+    <DivStyle>
       <Image
         src={url}
         alt="Profile"
@@ -34,6 +35,6 @@ export const Avatar = ({
         <div style={{ borderLeft: "1px solid grey" }}></div>
         <p style={{ paddingLeft: "15px" }}>{date}</p>
       </div>
-    </div>
+    </DivStyle>
   );
 };

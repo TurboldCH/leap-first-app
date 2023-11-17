@@ -1,27 +1,28 @@
 import { Links } from "./links";
 import { Logo } from "../../firstSection/logo";
+import { styled } from "@mui/material";
 
-const nav_bar = {
+const NavStyle = styled('div')({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
   textAlign: "center",
   paddingTop: "10px",
-};
+});
 
 export const Navigation = ({ type }: { type: string }) => {
   if (type === "blog") {
     return (
-      <div style={nav_bar}>
+      <NavStyle>
         <Logo color="black" />
         <Links color="#6D7D8B" type={type} />
-      </div>
+      </NavStyle>
     );
   }
   return (
-    <div style={nav_bar}>
+    <NavStyle>
       <Logo color="white" />
       <Links color="white" type={type} />
-    </div>
+    </NavStyle>
   );
 };

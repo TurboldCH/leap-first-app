@@ -1,12 +1,10 @@
-const style = {
-  display: "flex",
-  alignItems: "center",
-  gap: "3px",
-};
 
 export const Insta = () => {
   return (
-    <div style={style}>
+    <div style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "3px",}}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="22"

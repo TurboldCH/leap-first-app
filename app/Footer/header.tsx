@@ -1,12 +1,5 @@
 import { Logo } from "../firstSection/logo";
 
-const style = {
-  display: "flex",
-  justifyContent: "space-between",
-};
-
-const logo = {};
-
 export const Header = ({
   header1,
   header2,
@@ -17,7 +10,12 @@ export const Header = ({
   header3: string;
 }) => {
   return (
-    <div style={style}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+      }}
+    >
       <Logo />
       <p>{header1}</p>
       <p>{header2}</p>

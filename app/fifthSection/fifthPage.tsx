@@ -11,14 +11,14 @@ const DivStyle = styled("div")({
   width: "100vw",
   overflowX: "auto",
 });
-const header_style = {
+const HeaderStyle = styled("div")({
   fontFamily: "'Mulish', sans-serif",
   fontSize: "48px",
   fontWeight: "800",
   display: "flex",
   justifyContent: "center",
   paddingBottom: "120px",
-};
+});
 const ReviewStyle = styled("div")({
   width: "auto",
   height: "374px",
@@ -28,12 +28,7 @@ const ReviewStyle = styled("div")({
   overflowY: "hidden",
   boxShadow: "20px 20px 50px grey",
 });
-const icon = {
-  paddingTop: "62px",
-  paddingRight: "140px",
-  display: "flex",
-  justifyContent: "flex-end",
-};
+
 export const FifthPage = () => {
   const reviews = [
     {
@@ -75,7 +70,9 @@ export const FifthPage = () => {
   return (
     <DivStyle>
       <Container>
-        <h1 style={header_style}>What people say about us</h1>
+        <HeaderStyle>
+          <div>What people say about us</div>
+        </HeaderStyle>
         <ReviewStyle>
           {reviews.map((value, index) => {
             return (
@@ -89,7 +86,14 @@ export const FifthPage = () => {
             );
           })}
         </ReviewStyle>
-        <div style={icon}>
+        <div
+          style={{
+            paddingTop: "62px",
+            paddingRight: "140px",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
           <svg
             width="103"
             height="30"

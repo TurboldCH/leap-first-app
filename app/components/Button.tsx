@@ -1,56 +1,70 @@
-const get_access = {
-  borderRadius: "4px",
-  border: "2px solid #BBC8D4",
-  padding: "16px 22px",
-  color: "#BBC8D4",
-  backgroundColor: "transparent",
-  fontSize: "16px",
-  fontWeight: "700",
-  lineHeight: "24px",
-};
-
-const early_access = {
-  borderRadius: "4px",
-  border: "none",
-  backgroundColor: "#0bbef2",
-  padding: "16px 20px",
-  color: "white",
-  fontSize: "16px",
-  fontWeight: "700",
-  lineHeight: "24px",
-};
-
-const blog_getaccess = {
-  borderRadius: "4px",
-  border: "2px solid #5A4FF3",
-  backgroundColor: "rgba(77, 160, 253, 0.10)",
-  padding: "16px 20px",
-  color: "#4DA0FD",
-  fontSize: "16px",
-  fontWeight: "700",
-  lineHeight: "24px",
-};
-const next = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  border: "none",
-  color: "#6D7D8B",
-  textAlign: "center",
-  width: "165px",
-  height: "44px",
-};
 
 export const Button = ({ text, type }: { text: string; type: string }) => {
   if (type === "grey") {
-    return <button style={get_access}>{text}</button>;
+    return (
+      <button
+        style={{
+          borderRadius: "4px",
+          border: "2px solid #BBC8D4",
+          padding: "16px 22px",
+          color: "#BBC8D4",
+          backgroundColor: "transparent",
+          fontSize: "16px",
+          fontWeight: "700",
+          lineHeight: "24px",
+        }}
+      >
+        {text}
+      </button>
+    );
   } else if (type === "blog") {
-    return <button style={blog_getaccess}>{text}</button>;
+    return (
+      <button
+        style={{
+          borderRadius: "4px",
+          border: "2px solid #5A4FF3",
+          backgroundColor: "rgba(77, 160, 253, 0.10)",
+          padding: "16px 20px",
+          color: "#4DA0FD",
+          fontSize: "16px",
+          fontWeight: "700",
+          lineHeight: "24px",
+        }}
+      >
+        {text}
+      </button>
+    );
   } else if (type === "blue") {
-    return <button style={early_access}>{text}</button>;
+    return (
+      <button
+        style={{
+          borderRadius: "4px",
+          border: "none",
+          backgroundColor: "#0bbef2",
+          padding: "16px 20px",
+          color: "white",
+          fontSize: "16px",
+          fontWeight: "700",
+          lineHeight: "24px",
+        }}
+      >
+        {text}
+      </button>
+    );
   } else if (type === "next") {
     return (
-      <button style={next}>
+      <button
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "none",
+          color: "#6D7D8B",
+          textAlign: "center",
+          width: "165px",
+          height: "44px",
+        }}
+      >
         {text}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -67,5 +81,20 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
       </button>
     );
   }
-  return <button style={early_access}>Default</button>;
+  return (
+    <button
+      style={{
+        borderRadius: "4px",
+        border: "none",
+        backgroundColor: "#0bbef2",
+        padding: "16px 20px",
+        color: "white",
+        fontSize: "16px",
+        fontWeight: "700",
+        lineHeight: "24px",
+      }}
+    >
+      Default
+    </button>
+  );
 };

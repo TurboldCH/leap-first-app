@@ -1,17 +1,9 @@
-const content_style = {
+import { styled } from "@mui/material";
+
+const ContentStyle = styled("div")({
   display: "flex",
   flexDirection: "column",
-};
-const header_style = {
-  fontFamily: "'Mulish', sans-serif",
-  fontSize: "48px",
-  fontWeight: "800",
-};
-const content_p = {
-  fontFamily: "'Mulish', sans-serif",
-  fontWeight: "400",
-  fontSize: "18px",
-};
+});
 
 export const Content = ({
   header,
@@ -19,7 +11,9 @@ export const Content = ({
   headerColor,
   contentColor,
   headerWidth,
+  headerWeight,
   contentWidth,
+  contentWeight,
   gap,
 }: {
   header: string;
@@ -27,17 +21,35 @@ export const Content = ({
   headerColor: string;
   contentColor: string;
   headerWidth: string;
+  headerWeight: string;
   contentWidth: string;
+  contentWeight: string;
   gap: string;
 }) => {
   return (
-    <div style={{ ...content_style, gap: gap }}>
-      <h1 style={{ ...header_style, width: headerWidth, color: headerColor }}>
+    <ContentStyle style={{ gap: gap }}>
+      <h1
+        style={{
+          fontFamily: "'Mulish', sans-serif",
+          fontSize: "48px",
+          width: headerWidth,
+          color: headerColor,
+          fontWeight: headerWeight,
+        }}
+      >
         {header}
       </h1>
-      <p style={{ ...content_p, width: contentWidth, color: contentColor }}>
+      <p
+        style={{
+          fontFamily: "'Mulish', sans-serif",
+          fontSize: "18px",
+          width: contentWidth,
+          color: contentColor,
+          fontWeight: contentWeight,
+        }}
+      >
         {content}
       </p>
-    </div>
+    </ContentStyle>
   );
 };

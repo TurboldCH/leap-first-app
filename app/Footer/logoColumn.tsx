@@ -1,13 +1,14 @@
-const style = {
-  display: "flex",
-  flexDirection: "column",
-  gap:"13px",
-  alignItems: "center",
-};
 
 export const LogoColumn = () => {
   return (
-    <div style={style}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "13px",
+        alignItems: "center",
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="22"

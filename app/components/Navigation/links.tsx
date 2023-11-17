@@ -1,15 +1,12 @@
 import { Link } from "./link";
 import { Button } from "../Button";
 
-const links = {
-  display: "flex",
-  alignItems: "center",
-  gap: "30px",
-};
-
 export const Links = ({ color, type }: { color: string; type: string }) => {
   return (
-    <div id="links" style={links}>
+    <div
+      id="links"
+      style={{ display: "flex", alignItems: "center", gap: "30px" }}
+    >
       <Link color={color} href={""}>
         Products
       </Link>
