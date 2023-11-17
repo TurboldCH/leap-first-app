@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { SecondpageContent } from "./secondpagecontent";
 import { Container } from "../components/container";
+import { styled } from "@mui/material";
 
-const secondpage = {
+const SecondpageStyle = styled("div")({
   width: "100vw",
   height: "100vh",
   display: "flex",
@@ -11,31 +12,31 @@ const secondpage = {
   backgroundColor: "#f5f7fa",
   position: "relative",
   overflowX: "hidden",
-};
+});
 
-const background_img = {
+const BackgroundImgStyle = styled("div")({
   position: "absolute",
   width: "100%",
   top: "10%",
   bottom: "0",
   left: "50%",
   right: "0",
-  overflow:"hidden",
-};
+  overflow: "hidden",
+});
 
 export const Secondpage = () => {
   return (
-    <div id="secondPage" style={secondpage}>
+    <SecondpageStyle>
       <Container>
         <SecondpageContent />
       </Container>
-      <div style={background_img}>
+      <BackgroundImgStyle>
         <Image
           src="/firstPage/messageBox.png"
           alt="Message Box"
           layout="fill"
         />
-      </div>
-    </div>
+      </BackgroundImgStyle>
+    </SecondpageStyle>
   );
 };

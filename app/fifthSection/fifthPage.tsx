@@ -1,7 +1,8 @@
+import { styled } from "@mui/material";
 import { Container } from "../components/container";
 import { Review } from "./review";
 
-const style = {
+const DivStyle = styled("div")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -9,7 +10,7 @@ const style = {
   height: "100vh",
   width: "100vw",
   overflowX: "auto",
-};
+});
 const header_style = {
   fontFamily: "'Mulish', sans-serif",
   fontSize: "48px",
@@ -18,7 +19,7 @@ const header_style = {
   justifyContent: "center",
   paddingBottom: "120px",
 };
-const review_style = {
+const ReviewStyle = styled("div")({
   width: "auto",
   height: "374px",
   gap: "40px",
@@ -26,7 +27,7 @@ const review_style = {
   overflowX: "auto",
   overflowY: "hidden",
   boxShadow: "20px 20px 50px grey",
-};
+});
 const icon = {
   paddingTop: "62px",
   paddingRight: "140px",
@@ -72,10 +73,10 @@ export const FifthPage = () => {
     },
   ];
   return (
-    <div style={style}>
+    <DivStyle>
       <Container>
         <h1 style={header_style}>What people say about us</h1>
-        <div style={review_style}>
+        <ReviewStyle>
           {reviews.map((value, index) => {
             return (
               <Review
@@ -87,7 +88,7 @@ export const FifthPage = () => {
               />
             );
           })}
-        </div>
+        </ReviewStyle>
         <div style={icon}>
           <svg
             width="103"
@@ -107,6 +108,6 @@ export const FifthPage = () => {
           </svg>
         </div>
       </Container>
-    </div>
+    </DivStyle>
   );
 };
