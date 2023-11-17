@@ -6,6 +6,7 @@ const nav_bar = {
   justifyContent: "space-between",
   alignItems: "center",
   textAlign: "center",
+  paddingTop: "10px",
 };
 
 export const Navigation = ({ type }: { type: string }) => {

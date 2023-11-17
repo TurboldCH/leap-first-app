@@ -3,7 +3,7 @@ import { EmailInput } from "./emailinput";
 import { Button } from "../components/Button";
 
 const content = {
-  paddingTop: "196px",
+  paddingTop: "0px",
 };
 
 const emailinput = {

@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { ThirdPageContent } from "./thirdpagecontent";
+import { Container } from "../components/container";
 
 const thirdpage = {
-  width: "auto",
+  width: "100vw",
   height: "100vh",
   display: "flex",
   alignItems: "center",
@@ -11,17 +12,28 @@ const thirdpage = {
   overflowX: "hidden",
 };
 
+const background_img = {
+  position: "absolute",
+  top: "0",
+  bottom: "10%",
+  left: "0",
+  right: "60%",
+  overflow: "hidden",
+};
+
 export const Thirdpage = () => {
   return (
     <div style={thirdpage}>
-      <Image
-        src="/thirdPage.png"
-        alt="Third page image"
-        width={824}
-        height={675}
-        style={{ position: "absolute", top: 160, left: -267 }}
-      />
-      <ThirdPageContent />
+      <div style={background_img}>
+        <Image
+          src="/firstPage/thirdPage.png"
+          alt="Third page image"
+          layout="fill"
+        />
+      </div>
+      <Container>
+        <ThirdPageContent />
+      </Container>
     </div>
   );
 };

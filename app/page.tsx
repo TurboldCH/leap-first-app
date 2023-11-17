@@ -5,34 +5,24 @@ import { Thirdpage } from "./thirdSection/thirdPage";
 import { FourthPage } from "./fourthPage/fourthPage";
 import { FifthPage } from "./fifthSection/fifthPage";
 import { Footer } from "./Footer/footer";
+import { styled } from "@mui/material";
 
-const style = {
+const DivStyle = styled("div")({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-}
+});
 
-const container = {
-  display: "flex",
-  justifyContent: "center",
-  flexDirection: "column",
-  margin: "0, auto",
-  maxWidth: "1155px",
-  position: "relative",
-  paddingBottom: "140px",
-};
 export default function RootLayout() {
   return (
-    <div style={style}>
-      <div style={container}>
-        <Firstpage />
-        <Secondpage />
-        <Thirdpage />
-        <FourthPage />
-        <FifthPage />
-        <Footer />
-      </div>
-    </div>
+    <DivStyle>
+      <Firstpage />
+      <Secondpage />
+      <Thirdpage />
+      <FourthPage />
+      <FifthPage />
+      <Footer />
+    </DivStyle>
   );
 }
