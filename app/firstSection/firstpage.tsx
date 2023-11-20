@@ -15,7 +15,7 @@ export const Firstpage = () => {
   return (
     <FirstpageStyle>
       <Image
-        src="/firstImage.png"
+        src="/firstPage/firstImage.png"
         alt="Background Image"
         layout="fill"
         objectFit="cover"
