@@ -5,6 +5,10 @@ import { Post } from "./post";
 import { Footer } from "../Footer/footer";
 import { Button } from "../components/Button";
 import { styled } from "@mui/material";
+import { firebaseApp } from "../firebase";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { getFirestore, collection } from "firebase/firestore";
+
 
 const DivStyle = styled("div")({
   background: "var(--HP-design-color, #F5F7FA)",
@@ -13,7 +17,7 @@ const DivStyle = styled("div")({
   alignItems: "center",
   flexDirection: "column",
 });
-const ContainerStyle = styled('div')({
+const ContainerStyle = styled("div")({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
@@ -36,89 +40,97 @@ const ContentStyle = styled("div")({
 });
 
 export default function RootLayout() {
-  const posts = [
+  // const posts = [
+  //   {
+  //     url: "/blog/blog1.png",
+  //     header: "The Emotional Toll of Being in UX",
+  //     content:
+  //       "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
+  //     avatar: "/blog/wade.png",
+  //     name: "Wade Warren",
+  //     date: "2nd January,2022",
+  //   },
+  //   {
+  //     url: "/blog/blog2.png",
+  //     header: "10 secret tips for managing a team remotely",
+  //     content:
+  //       "Our latest updates and blogs about managing your team Our latest updates and blogs about managing your team",
+  //     avatar: "/blog/bessie.png",
+  //     name: "Bessie Cooper",
+  //     date: "2nd January,2022",
+  //   },
+  //   {
+  //     url: "/blog/blog3.png",
+  //     header: "What Ever Happened to Steampunk?",
+  //     content:
+  //       "How the iPhone popularized steampunk… and how the iPhone killed it off",
+  //     avatar: "/blog/courtney.png",
+  //     name: "Courtney Henry",
+  //     date: "2nd January,2022",
+  //   },
+  //   {
+  //     url: "/blog/blog4.png",
+  //     header: "The 2020 Guide for White Men in Tech",
+  //     content:
+  //       "How to use centuries of unfair advantage to make the world a more equal place",
+  //     avatar: "/blog/darlene.png",
+  //     name: "Darlene Robert",
+  //     date: "2nd January,2022",
+  //   },
+  //   {
+  //     url: "/blog/blog5.png",
+  //     header: "Why Are Women Still Behind in the Design World?",
+  //     content:
+  //       "It’s 2020, but women designers still face lower pay and less opportunity. What gives?",
+  //     avatar: "/blog/leslie.png",
+  //     name: "Leslie Alexander",
+  //     date: "2nd January,2022",
+  //   },
+  //   {
+  //     url: "/blog/blog6.png",
+  //     header: "The Ultimate Guide to Becoming a Great Designer",
+  //     content:
+  //       "Our latest updates and blogs about managing your team Our latest updates and blogs about managing your team",
+  //     avatar: "/blog/eleanor.png",
+  //     name: "Eleanor Pena",
+  //     date: "2nd January,2022",
+  //   },
+  //   {
+  //     url: "/blog/blog7.png",
+  //     header: "Data-Driven Design is Killing Our Instincts",
+  //     content:
+  //       "Our latest updates and blogs about managing your team Our latest updates and blogs about managing your team",
+  //     avatar: "/blog/jane.png",
+  //     name: "Jane Cooper",
+  //     date: "2nd January,2022",
+  //   },
+  //   {
+  //     url: "/blog/blog8.png",
+  //     header: "Finding the Blank Spots in Big Data",
+  //     content:
+  //       "Artists and designers are working to address a major problem for marginalized communities in the data economy: ‘If the data does not exist…",
+  //     avatar: "/blog/jenny.png",
+  //     name: "Jenny Wilson",
+  //     date: "2nd January,2022",
+  //   },
+  //   {
+  //     url: "/blog/blog9.png",
+  //     header: "3 Lessons We Learned From Rebranding Gusto",
+  //     content:
+  //       "You might not know the music, but designers have certainly taken notice of this small but visceral movement from the late ’80s",
+  //     avatar: "/blog/jacob.png",
+  //     name: "Jacob Jones",
+  //     date: "2nd January,2022",
+  //   },
+  // ];
+
+  const [value, loading, error] = useCollection(
+    collection(getFirestore(firebaseApp), "blog"),
     {
-      url: "/blog/blog1.png",
-      header: "The Emotional Toll of Being in UX",
-      content:
-        "There are times when our work impacts us deeply — sometimes in ways we neither acknowledge nor understand",
-      avatar: "/blog/wade.png",
-      name: "Wade Warren",
-      date: "2nd January,2022",
-    },
-    {
-      url: "/blog/blog2.png",
-      header: "10 secret tips for managing a team remotely",
-      content:
-        "Our latest updates and blogs about managing your team Our latest updates and blogs about managing your team",
-      avatar: "/blog/bessie.png",
-      name: "Bessie Cooper",
-      date: "2nd January,2022",
-    },
-    {
-      url: "/blog/blog3.png",
-      header: "What Ever Happened to Steampunk?",
-      content:
-        "How the iPhone popularized steampunk… and how the iPhone killed it off",
-      avatar: "/blog/courtney.png",
-      name: "Courtney Henry",
-      date: "2nd January,2022",
-    },
-    {
-      url: "/blog/blog4.png",
-      header: "The 2020 Guide for White Men in Tech",
-      content:
-        "How to use centuries of unfair advantage to make the world a more equal place",
-      avatar: "/blog/darlene.png",
-      name: "Darlene Robert",
-      date: "2nd January,2022",
-    },
-    {
-      url: "/blog/blog5.png",
-      header: "Why Are Women Still Behind in the Design World?",
-      content:
-        "It’s 2020, but women designers still face lower pay and less opportunity. What gives?",
-      avatar: "/blog/leslie.png",
-      name: "Leslie Alexander",
-      date: "2nd January,2022",
-    },
-    {
-      url: "/blog/blog6.png",
-      header: "The Ultimate Guide to Becoming a Great Designer",
-      content:
-        "Our latest updates and blogs about managing your team Our latest updates and blogs about managing your team",
-      avatar: "/blog/eleanor.png",
-      name: "Eleanor Pena",
-      date: "2nd January,2022",
-    },
-    {
-      url: "/blog/blog7.png",
-      header: "Data-Driven Design is Killing Our Instincts",
-      content:
-        "Our latest updates and blogs about managing your team Our latest updates and blogs about managing your team",
-      avatar: "/blog/jane.png",
-      name: "Jane Cooper",
-      date: "2nd January,2022",
-    },
-    {
-      url: "/blog/blog8.png",
-      header: "Finding the Blank Spots in Big Data",
-      content:
-        "Artists and designers are working to address a major problem for marginalized communities in the data economy: ‘If the data does not exist…",
-      avatar: "/blog/jenny.png",
-      name: "Jenny Wilson",
-      date: "2nd January,2022",
-    },
-    {
-      url: "/blog/blog9.png",
-      header: "3 Lessons We Learned From Rebranding Gusto",
-      content:
-        "You might not know the music, but designers have certainly taken notice of this small but visceral movement from the late ’80s",
-      avatar: "/blog/jacob.png",
-      name: "Jacob Jones",
-      date: "2nd January,2022",
-    },
-  ];
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
+  console.log(value?.docs);
 
   return (
     <DivStyle>
@@ -138,19 +150,32 @@ export default function RootLayout() {
           />
         </ContentStyle>
         <Posts_style>
-          {posts.map((value, index) => {
-            return (
-              <Post
-                url={value.url}
-                header={value.header}
-                content={value.content}
-                avatar={value.avatar}
-                name={value.name}
-                date={value.date}
-                key={index}
-              />
-            );
-          })}
+          {error && (
+            <h1 style={{ backgroundColor: "black", color: "white" }}>
+              Error...
+            </h1>
+          )}
+          {loading && (
+            <h1 style={{ backgroundColor: "black", color: "white" }}>
+              Loading...
+            </h1>
+          )}
+          {!loading &&
+            value?.docs.map((value, index) => {
+              console.log(value.data());
+              return (
+                <Post
+                  url={""}
+                  avatar={""}
+                  name={""}
+                  content={""}
+                  header={""}
+                  date={""}
+                  {...value.data()}
+                  key={index}
+                />
+              );
+            })}
         </Posts_style>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button type="next" text="Next" />
