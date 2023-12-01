@@ -65,21 +65,14 @@ export default function RootLayout() {
           />
         </ContentStyle>
         <Posts_style>
-          {error && (
-            <h1 style={{ color: "black" }}>
-              ERROR...
-            </h1>
-          )}
-          {loading && (
-            <h1 style={{ color: "black" }}>
-              LOADING...
-            </h1>
-          )}
+          {error && <h1 style={{ color: "black" }}>ERROR...</h1>}
+          {loading && <h1 style={{ color: "black" }}>LOADING...</h1>}
           {!loading &&
             value?.docs.map((value, index) => {
               console.log(value.data());
               return (
                 <Post
+                  id={value.id}
                   url={""}
                   avatar={""}
                   name={""}
