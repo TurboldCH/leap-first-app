@@ -8,6 +8,7 @@ import { styled } from "@mui/material";
 import { firebaseApp } from "../firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { getFirestore, collection } from "firebase/firestore";
+import AuthDetails from "../authentication/AuthDetails";
 
 const DivStyle = styled("div")({
   background: "var(--HP-design-color, #F5F7FA)",
@@ -51,6 +52,7 @@ export default function RootLayout() {
     <DivStyle>
       <ContainerStyle>
         <Navigation type="blog" />
+        <AuthDetails />
         <ContentStyle>
           <Content
             header="Blog posts"

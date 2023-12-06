@@ -22,7 +22,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user == null) {
-      router.push("/login");
+      router.push("login");
       setAuthUser(user);
     } else {
       setAuthUser(null);
@@ -32,7 +32,7 @@ export default function Login() {
   const signIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("blog");
+      router.push("..");
     } catch (error) {
       alert(error);
     }

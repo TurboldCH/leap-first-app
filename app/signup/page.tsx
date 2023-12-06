@@ -16,13 +16,8 @@ export default function SignUp() {
 
   const signUp = async () => {
     try {
-      createUserWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-        }
-      );
-      router.push("/login");
+      await createUserWithEmailAndPassword(auth, email, password);
+      router.push("login");
     } catch (error) {
       alert(error);
     }

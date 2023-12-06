@@ -6,7 +6,6 @@ import { firebaseApp } from "@/app/firebase";
 const auth = getAuth(firebaseApp);
 
 export const Links = ({ color, type }: { color: string; type: string }) => {
-
   return (
     <div
       id="links"
@@ -24,13 +23,6 @@ export const Links = ({ color, type }: { color: string; type: string }) => {
       <Link color={color} href={"login"}>
         Log in
       </Link>
-      <button
-        onClick={async () => {
-          // handleLogout();
-        }}
-      >
-        Sign Out
-      </button>
       <Button text="Get Access" type={type} />
     </div>
   );

@@ -3,6 +3,7 @@ import { Navigation } from "../components/Navigation/navigation";
 import Image from "next/image";
 import { Container } from "../components/container";
 import { styled } from "@mui/material";
+import AuthDetails from "../authentication/AuthDetails";
 
 const FirstpageStyle = styled("div")({
   width: "auto",

@@ -9,11 +9,11 @@ import { getDownloadURL, ref, getStorage, uploadBytes } from "firebase/storage";
 import styled from "@emotion/styled";
 import { Box, Button, TextField } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import AuthDetails from "@/app/authentication/AuthDetails";
 
 const ContainerStyle = styled("div")({
   display: "flex",
   justifyContent: "center",
-  //   flexDirection: "column",
   margin: "0, auto",
   maxWidth: "1440px",
   position: "relative",
@@ -82,6 +82,7 @@ export default function Home() {
 
   return (
     <div style={{ display: "flex" }}>
+      {/* <AuthDetails /> */}
       <div
         style={{
           width: "50%",

@@ -10,9 +10,7 @@ import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { firebaseApp } from "./firebase";
 import { useRouter } from "next/navigation";
-
-const auth = getAuth(firebaseApp);
-const user = auth.currentUser;
+import AuthDetails from "./authentication/AuthDetails";
 
 const DivStyle = styled("div")({
   display: "flex",
@@ -22,27 +20,29 @@ const DivStyle = styled("div")({
 });
 
 export default function RootLayout() {
-  
-  const [authUser, setAuthUser] = useState(null);
-  const router = useRouter();
+  // const [authUser, setAuthUser] = useState(null);
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (user == null) {
-      router.push("/login");
-      setAuthUser(user);
-    } else {
-      setAuthUser(null);
-    }
-  });
+  // useEffect(() => {
+  //   if (user == null) {
+  //     router.push("/login");
+  //     setAuthUser(user);
+  //   } else {
+  //     setAuthUser(null);
+  //   }
+  // });
 
   return (
-    <DivStyle>
-      <Firstpage />
-      <Secondpage />
-      <Thirdpage />
-      <FourthPage />
-      <FifthPage />
-      <Footer />
-    </DivStyle>
+    <>
+      <AuthDetails />
+      <DivStyle>
+        <Firstpage />
+        <Secondpage />
+        <Thirdpage />
+        <FourthPage />
+        <FifthPage />
+        <Footer />
+      </DivStyle>
+    </>
   );
 }
