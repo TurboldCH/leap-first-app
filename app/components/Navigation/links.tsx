@@ -2,6 +2,7 @@ import { Link } from "./link";
 import { Button } from "../Button";
 import { getAuth, signOut } from "firebase/auth";
 import { firebaseApp } from "@/app/firebase";
+import AuthDetails from "@/app/authentication/AuthDetails";
 
 const auth = getAuth(firebaseApp);
 
@@ -20,8 +21,12 @@ export const Links = ({ color, type }: { color: string; type: string }) => {
       <Link color={color} href={""}>
         Contact
       </Link>
-      <Link color={color} href={"login"}>
+      <AuthDetails children={undefined} />
+      {/* <Link color={color} href={"login"}>
         Log in
+      </Link> */}
+      <Link color={color} href={"blog"}>
+        Blogs
       </Link>
       <Button text="Get Access" type={type} />
     </div>

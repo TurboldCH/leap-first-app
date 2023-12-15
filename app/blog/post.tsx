@@ -4,17 +4,9 @@ import { Avatar } from "./avatar";
 import { IconButton, styled } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
-import { getStorage, ref, deleteObject } from "firebase/storage";
-import {
-  doc,
-  deleteDoc,
-  getFirestore,
-  collection,
-  documentId,
-} from "firebase/firestore";
+import { doc, deleteDoc, getFirestore } from "firebase/firestore";
 import { firebaseApp } from "../firebase";
-import { useCollection } from "react-firebase-hooks/firestore";
-import firebase from "firebase/compat/app";
+import { useRouter } from "next/navigation";
 
 const DivStyle = styled("div")({
   padding: "0",
@@ -23,6 +15,7 @@ const DivStyle = styled("div")({
   boxShadow: "20px 20px 50px grey",
   borderRadius: "30px",
   overflow: "hidden",
+  cursor: "pointer",
 });
 
 const IconButtonStyle = styled("div")({
@@ -51,9 +44,9 @@ export const Post = ({
 }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [isDisplaying, setIsDiplaying] = useState(true);
-
-  const storage = getStorage(firebaseApp);
   const db = getFirestore(firebaseApp);
+
+  const { push } = useRouter();
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -78,6 +71,9 @@ export const Post = ({
           <DivStyle
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
+            onClick={() => {
+              push(`blog/${id}`);
+            }}
             id="blog"
           >
             {isHovering && (

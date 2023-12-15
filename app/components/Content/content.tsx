@@ -1,4 +1,6 @@
+import { AuthContext } from "@/app/authentication/AuthDetails";
 import { styled } from "@mui/material";
+import { useContext } from "react";
 
 const ContentStyle = styled("div")({
   display: "flex",
@@ -26,6 +28,7 @@ export const Content = ({
   contentWeight: string;
   gap: string;
 }) => {
+  const { user } = useContext(AuthContext);
   return (
     <ContentStyle style={{ gap: gap }}>
       <h1
@@ -49,6 +52,9 @@ export const Content = ({
         }}
       >
         {content}
+      </p>
+      <p style={{ fontFamily: "'Mulish', sans-serif", fontSize: "18px" }}>
+        by {user?.email}
       </p>
     </ContentStyle>
   );

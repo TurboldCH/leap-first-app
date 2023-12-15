@@ -1,8 +1,9 @@
 import { Links } from "./links";
 import { Logo } from "../../firstSection/logo";
 import { styled } from "@mui/material";
+import { Link } from "./link";
 
-const NavStyle = styled('div')({
+const NavStyle = styled("div")({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",

@@ -3,21 +3,19 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useState } from "react";
 import { firebaseApp } from "../../firebase";
-import { Footer } from "@/app/Footer/footer";
 import React from "react";
 import { getDownloadURL, ref, getStorage, uploadBytes } from "firebase/storage";
 import styled from "@emotion/styled";
 import { Box, Button, TextField } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import AuthDetails from "@/app/authentication/AuthDetails";
 
-const ContainerStyle = styled("div")({
-  display: "flex",
-  justifyContent: "center",
-  margin: "0, auto",
-  maxWidth: "1440px",
-  position: "relative",
-});
+// const ContainerStyle = styled("div")({
+//   display: "flex",
+//   justifyContent: "center",
+//   margin: "0, auto",
+//   maxWidth: "1440px",
+//   position: "relative",
+// });
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -149,7 +147,7 @@ export default function Home() {
             alignItems: "center",
           }}
         >
-          <div style={{display:"flex", gap: "10px"}}>
+          <div style={{ display: "flex", gap: "10px" }}>
             <Button
               onChange={(event) => {
                 handleSelectedFileURL(event.target.files);

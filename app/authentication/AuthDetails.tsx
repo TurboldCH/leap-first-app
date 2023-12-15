@@ -1,14 +1,16 @@
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+"use client";
+import { User, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { firebaseApp } from "../firebase";
-import { useEffect, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Email } from "@mui/icons-material";
 
-export default function AuthDetails() {
+export const AuthContext = createContext({ user: "" });
+
+export default function AuthDetails({ children }: { children: ReactNode }) {
   const auth = getAuth(firebaseApp);
   const user = auth.currentUser;
   const router = useRouter();
-  const [authUser, setAuthUser] = useState(null);
+  const [authUser, setAuthUser] = useState<User>(null);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -32,15 +34,45 @@ export default function AuthDetails() {
   };
   return (
     <>
+      <AuthContext.Provider value={{ user: user }}>
+        {children}
+      </AuthContext.Provider>
       {authUser ? (
         <>
-          {`Signed in as ${authUser.email}`}
-          <button 
-          style = {{width: "200px"}}
-          onClick={userSignOut}>Sign out</button>{" "}
+          {/* {`Signed in as ${authUser.email}`} */}
+          <button
+            style={{
+              border: "none",
+              background: "transparent",
+              textDecoration: "underline",
+              textDecorationColor: "gray",
+              fontFamily: "'Mulish', sans-serif",
+              fontSize: "16px",
+              fontWeight: "500",
+              lineHeight: "175.7%",
+              color: "#7969EA",
+            }}
+            onClick={userSignOut}
+          >
+            Sign out
+          </button>{" "}
         </>
       ) : (
-        <p>Signed Out</p>
+        <p
+          style={{
+            border: "none",
+            background: "transparent",
+            textDecoration: "underline",
+            textDecorationColor: "gray",
+            fontFamily: "'Mulish', sans-serif",
+            fontSize: "16px",
+            fontWeight: "500",
+            lineHeight: "175.7%",
+            color: "#256071",
+          }}
+        >
+          Signed Out
+        </p>
       )}
     </>
   );

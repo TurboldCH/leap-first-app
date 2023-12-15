@@ -94,42 +94,38 @@ export default function SignUp() {
             <h1 style={{ color: "#FFF", fontFamily: "'Mulish', sans-serif" }}>
               SIGN UP
             </h1>
-            <form onSubmit={signUp}>
-              <Box
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
+            <Box
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              <TextField
+                label="Enter email"
+                onChange={(event) => {
+                  setEmail(event.target.value);
                 }}
+              />
+              <TextField
+                type="password"
+                label="Create password"
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+              />
+              <Button
+                style={{
+                  borderRadius: "4px",
+                  background: "#FFF",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.30)",
+                }}
+                type="submit"
+                onClick={signUp}
               >
-                <TextField
-                  label="Enter email"
-                  onChange={(event) => {
-                    setEmail(event.target.value);
-                  }}
-                />
-                <TextField
-                  type="password"
-                  label="Create password"
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                  }}
-                />
-                <Button
-                  style={{
-                    borderRadius: "4px",
-                    background: "#FFF",
-                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.30)",
-                  }}
-                  type="submit"
-                  onClick={async () => {
-                    signUp();
-                  }}
-                >
-                  SIGN UP
-                </Button>
-              </Box>
-            </form>
+                SIGN UP
+              </Button>
+            </Box>
           </div>
         </div>
       </body>

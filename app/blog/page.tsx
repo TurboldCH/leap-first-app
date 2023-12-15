@@ -8,6 +8,7 @@ import { styled } from "@mui/material";
 import { firebaseApp } from "../firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { getFirestore, collection } from "firebase/firestore";
+import { Link } from "../components/Navigation/link";
 import AuthDetails from "../authentication/AuthDetails";
 
 const DivStyle = styled("div")({
@@ -46,52 +47,56 @@ export default function RootLayout() {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
-  console.log(value?.docs);
+  // console.log(value?.docs);
 
   return (
-    <DivStyle>
-      <ContainerStyle>
-        <Navigation type="blog" />
-        <AuthDetails />
-        <ContentStyle>
-          <Content
-            header="Blog posts"
-            content="Our latest updates and blogs about managing your team"
-            headerColor="black"
-            contentColor="#6D7D8B"
-            headerWeight="800"
-            headerWidth="300px"
-            contentWidth="480px"
-            contentWeight="500"
-            gap="20px"
-          />
-        </ContentStyle>
-        <Posts_style>
-          {error && <h1 style={{ color: "black" }}>ERROR...</h1>}
-          {loading && <h1 style={{ color: "black" }}>LOADING...</h1>}
-          {!loading &&
-            value?.docs.map((value, index) => {
-              console.log(value.data());
-              return (
-                <Post
-                  id={value.id}
-                  url={""}
-                  avatar={""}
-                  name={""}
-                  content={""}
-                  header={""}
-                  date={""}
-                  {...value.data()}
-                  key={index}
-                />
-              );
-            })}
-        </Posts_style>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button type="next" text="Next" />
-        </div>
-      </ContainerStyle>
-      <Footer />
-    </DivStyle>
+    <AuthDetails>
+      <DivStyle>
+        <ContainerStyle>
+          <Navigation type="blog" />
+          <ContentStyle>
+            <Content
+              header="Blog posts"
+              content="Our latest updates and blogs about managing your team"
+              headerColor="black"
+              contentColor="#6D7D8B"
+              headerWeight="800"
+              headerWidth="300px"
+              contentWidth="480px"
+              contentWeight="500"
+              gap="20px"
+            />
+          </ContentStyle>
+          <Link color={"#000"} href={"/blog/create"}>
+            Create your own post
+          </Link>
+          <Posts_style>
+            {error && <h1 style={{ color: "black" }}>ERROR...</h1>}
+            {loading && <h1 style={{ color: "black" }}>LOADING...</h1>}
+            {!loading &&
+              value?.docs.map((value, index) => {
+                console.log(value.data());
+                return (
+                  <Post
+                    id={value.id}
+                    url={""}
+                    avatar={""}
+                    name={""}
+                    content={""}
+                    header={""}
+                    date={""}
+                    {...value.data()}
+                    key={index}
+                  />
+                );
+              })}
+          </Posts_style>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button type="next" text="Next" />
+          </div>
+        </ContainerStyle>
+        <Footer />
+      </DivStyle>
+    </AuthDetails>
   );
 }
