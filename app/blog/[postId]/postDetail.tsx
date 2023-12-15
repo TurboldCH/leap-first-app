@@ -1,16 +1,19 @@
 "use client";
 import { Navigation } from "../../components/Navigation/navigation";
-import { styled } from "@mui/material";
+import { IconButton, styled } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { Footer } from "../../Footer/footer";
 import { Avatar } from "../avatar";
 import Image from "next/image";
 import { Content } from "../../components/Content/content";
 import { WrittenBy } from "./writtenBy";
-import { Comments } from "./comments";
+import { CommentInput } from "./commentInput";
 import AuthDetails from "@/app/authentication/AuthDetails";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, getFirestore } from "firebase/firestore";
+import { collection, deleteDoc, doc, getFirestore } from "firebase/firestore";
 import { firebaseApp } from "@/app/firebase";
+import { useState } from "react";
+import { Comments } from "./comments";
 
 const DivStyle = styled("div")({
   background: "#FFF",
@@ -32,6 +35,12 @@ const ContainerStyle = styled("div")({
 const ContentStyle = styled("div")({
   padding: "96px 0px 64px 0px",
 });
+const IconButtonStyle = styled("div")({
+  display: "flex",
+  backgroundColor: "#FFd",
+  borderRadius: "50%",
+});
+
 export default function PostDetail({
   header,
   avatar,
@@ -53,6 +62,8 @@ export default function PostDetail({
   contentDetail: string;
   postId: string;
 }) {
+
+
   //Comment ID
   const [commentsValue] = useCollection(
     collection(getFirestore(firebaseApp), `blog/${postId}/comments`),
@@ -60,7 +71,18 @@ export default function PostDetail({
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
-  console.log(commentsValue?.docs);
+  //Delete Comment
+  // const deleteComment = async () => {
+  //   try {
+  //     // await deleteDoc(
+  //     //   doc(getFirestore(firebaseApp), `blog/${postId}/comments`, commentId)
+  //     // );
+  //     setIsDiplaying(false);
+  //   } catch (error) {
+  //     alert(error);
+  //   }
+  // };
+  // console.log(commentsValue?.docs);
   return (
     <AuthDetails>
       <DivStyle>
@@ -114,11 +136,8 @@ export default function PostDetail({
                 margin: "83px 0 52px 0",
               }}
             ></div>
-            {commentsValue?.docs.map((value, index) => {
-              console.log(value.data());
-              return <div>{value.data().comment}</div>;
-            })}
-            <Comments />
+            <Comments postId={postId}/>
+            <CommentInput postId={postId} />
           </ContentStyle>
         </ContainerStyle>
         <Footer />
