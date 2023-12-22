@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IconButton, styled } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import { firebaseApp } from "@/app/firebase";
+import { AuthContext } from "@/app/authentication/AuthDetails";
+import Image from "next/image";
 
 const IconButtonStyle = styled("div")({
   display: "flex",
@@ -32,13 +34,13 @@ export const SingleComment = ({
       alert(error);
     }
   };
-
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <div
         style={{
           display: "flex",
-          height: "30px",
+          height: "50px",
           alignItems: "center",
           justifyContent: "space-between",
           width: "700px",
@@ -46,7 +48,30 @@ export const SingleComment = ({
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       >
-        &#x2022; {text}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {user?.profilePic ? (
+            <Image
+              src={user?.profilePic}
+              alt="Profile picture"
+              width={30}
+              height={30}
+            />
+          ) : (
+            <Image
+              src={"/../login/default.png"}
+              alt="Profile picture"
+              width={40}
+              height={40}
+            />
+          )}
+          <div>
+            <p style={{ textTransform: "uppercase" }}>
+              &#x21312; By {user?.email}
+            </p>
+            <p style={{ fontFamily: "" }}>{text}</p>
+          </div>
+        </div>
+
         {isHovering && (
           <IconButtonStyle>
             <IconButton aria-label="delete" size="small">

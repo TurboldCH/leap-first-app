@@ -6,17 +6,21 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import { firebaseApp } from "@/app/firebase";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "@/app/authentication/AuthDetails";
 
 export const CommentInput = ({ postId }: { postId: string }) => {
   const [comment, setComment] = useState<string>();
   const db = getFirestore(firebaseApp);
+  const { user } = useContext(AuthContext);
 
   const uploadCommentToStorage = async () => {
     // const storageRef = ref(storage, comment ? undefined : comment);
+    console.log(user);
     try {
       await addDoc(collection(db, `blog/${postId}/comments`), {
         comment: comment,
+        createdBy: user,
       });
       setComment("");
     } catch (error) {

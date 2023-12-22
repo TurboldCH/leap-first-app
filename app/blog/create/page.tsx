@@ -1,5 +1,4 @@
 "use client";
-
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useState } from "react";
 import { firebaseApp } from "../../firebase";
@@ -58,7 +57,7 @@ export default function Home() {
 
   const uploadFileToStorage = async () => {
     console.log(url?.name);
-    const storageRef = ref(storage, url?.name);
+    const storageRef = ref(storage, `${url?.name} ${Date.now()}`);
     try {
       await uploadBytes(storageRef, url!);
       const downloadAvatarURL = await getDownloadURL(

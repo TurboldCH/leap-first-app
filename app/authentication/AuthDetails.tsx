@@ -10,14 +10,14 @@ export default function AuthDetails({ children }: { children: ReactNode }) {
   const auth = getAuth(firebaseApp);
   const user = auth.currentUser;
   const router = useRouter();
-  const [authUser, setAuthUser] = useState<User>(null);
+  const [authUser, setAuthUser] = useState<User>();
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
       } else {
-        setAuthUser(null);
+        setAuthUser(undefined);
         router.push("login");
       }
     });

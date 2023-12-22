@@ -1,7 +1,6 @@
 "use client";
 import { Navigation } from "../../components/Navigation/navigation";
 import { IconButton, styled } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { Footer } from "../../Footer/footer";
 import { Avatar } from "../avatar";
 import Image from "next/image";
@@ -12,7 +11,6 @@ import AuthDetails from "@/app/authentication/AuthDetails";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, deleteDoc, doc, getFirestore } from "firebase/firestore";
 import { firebaseApp } from "@/app/firebase";
-import { useState } from "react";
 import { Comments } from "./comments";
 
 const DivStyle = styled("div")({
@@ -62,8 +60,6 @@ export default function PostDetail({
   contentDetail: string;
   postId: string;
 }) {
-
-
   //Comment ID
   const [commentsValue] = useCollection(
     collection(getFirestore(firebaseApp), `blog/${postId}/comments`),
@@ -136,7 +132,7 @@ export default function PostDetail({
                 margin: "83px 0 52px 0",
               }}
             ></div>
-            <Comments postId={postId}/>
+            <Comments postId={postId} />
             <CommentInput postId={postId} />
           </ContentStyle>
         </ContainerStyle>
