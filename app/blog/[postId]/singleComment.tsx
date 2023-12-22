@@ -16,10 +16,12 @@ export const SingleComment = ({
   text,
   postId,
   commentId,
+  createdBy,
 }: {
   text: string;
   postId: string;
   commentId: string;
+  createdBy: string;
 }) => {
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => setIsHovering(true);
@@ -66,7 +68,7 @@ export const SingleComment = ({
           )}
           <div>
             <p style={{ textTransform: "uppercase" }}>
-              &#x21312; By {user?.email}
+              &#x21312; By {createdBy}
             </p>
             <p style={{ fontFamily: "" }}>{text}</p>
           </div>

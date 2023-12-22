@@ -25,7 +25,7 @@ export const Links = ({ color, type }: { color: string; type: string }) => {
       {/* <Link color={color} href={"login"}>
         Log in
       </Link> */}
-      <Link color={color} href={"blog"}>
+      <Link color={color} href={"/blog"}>
         Blogs
       </Link>
       <Button text="Get Access" type={type} />

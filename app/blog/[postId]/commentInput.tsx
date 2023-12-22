@@ -15,12 +15,10 @@ export const CommentInput = ({ postId }: { postId: string }) => {
   const { user } = useContext(AuthContext);
 
   const uploadCommentToStorage = async () => {
-    // const storageRef = ref(storage, comment ? undefined : comment);
-    console.log(user);
     try {
       await addDoc(collection(db, `blog/${postId}/comments`), {
         comment: comment,
-        createdBy: user,
+        createdBy: user?.email,
       });
       setComment("");
     } catch (error) {
