@@ -19,21 +19,15 @@ export const SingleComment = ({
   postId: string;
   commentId: string;
 }) => {
-  const [isHovering, setIsHovering] = useState(true);
-  const [isDisplaying, setIsDiplaying] = useState(true);
-  const handleMouseOver = () => {
-    setIsHovering(true);
-  };
-  const handleMouseOut = () => {
-    setIsHovering(false);
-  };
+  const [isHovering, setIsHovering] = useState(false);
+  const handleMouseOver = () => setIsHovering(true);
+  const handleMouseOut = () => setIsHovering(false);
 
   const deleteComment = async () => {
     try {
       await deleteDoc(
         doc(getFirestore(firebaseApp), `blog/${postId}/comments`, commentId)
       );
-      setIsDiplaying(false);
     } catch (error) {
       alert(error);
     }
@@ -41,28 +35,26 @@ export const SingleComment = ({
 
   return (
     <div>
-      {isDisplaying && (
-        <div
-          style={{
-            display: "flex",
-            height: "30px",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "700px",
-          }}
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
-        >
-          &#x2022; {text}
-          {isHovering && (
-            <IconButtonStyle>
-              <IconButton aria-label="delete" size="small">
-                <DeleteIcon fontSize="inherit" onClick={deleteComment} />
-              </IconButton>
-            </IconButtonStyle>
-          )}
-        </div>
-      )}
+      <div
+        style={{
+          display: "flex",
+          height: "30px",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "700px",
+        }}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        &#x2022; {text}
+        {isHovering && (
+          <IconButtonStyle>
+            <IconButton aria-label="delete" size="small">
+              <DeleteIcon fontSize="inherit" onClick={deleteComment} />
+            </IconButton>
+          </IconButtonStyle>
+        )}
+      </div>
     </div>
   );
 };

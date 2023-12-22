@@ -10,7 +10,6 @@ import { useState } from "react";
 
 export const CommentInput = ({ postId }: { postId: string }) => {
   const [comment, setComment] = useState<string>();
-  const storage = getStorage();
   const db = getFirestore(firebaseApp);
 
   const uploadCommentToStorage = async () => {
@@ -19,7 +18,6 @@ export const CommentInput = ({ postId }: { postId: string }) => {
       await addDoc(collection(db, `blog/${postId}/comments`), {
         comment: comment,
       });
-      alert("Commented Successfully!");
       setComment("");
     } catch (error) {
       alert(error);
@@ -57,6 +55,7 @@ export const CommentInput = ({ postId }: { postId: string }) => {
           style={{ width: "630px" }}
           label="Comments"
           placeholder="Comments"
+          value={comment}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">

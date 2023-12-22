@@ -16,7 +16,7 @@ export const Comments = ({ postId }: { postId: string }) => {
       {commentsValue?.docs.map((value, index) => {
         // {console.log("Comment id: ", value.id)}
         return (
-          <div style={{ width: "700px" }}>
+          <div style={{ width: "700px" }} key={index}>
             <SingleComment
               text={value.data().comment}
               postId={postId}
