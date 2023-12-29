@@ -33,7 +33,7 @@ const ContainerStyle = styled("div")({
 });
 
 export default function postDetail({ params }: { params: any }) {
-  console.log(params.postId);
+  // console.log(params.postId);
   //Blog ID
   const [value, loading, error] = useCollection(
     collection(getFirestore(firebaseApp), "blog"),

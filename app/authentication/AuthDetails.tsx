@@ -4,11 +4,13 @@ import { firebaseApp } from "../firebase";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export const AuthContext = createContext({ user: "" });
+export const AuthContext = createContext({ user: "", email: "" });
 
 export default function AuthDetails({ children }: { children: ReactNode }) {
   const auth = getAuth(firebaseApp);
   const user = auth.currentUser;
+  // console.log("User: ", user);
+  // console.log("Auth:", auth);
   const router = useRouter();
   const [authUser, setAuthUser] = useState<User>();
 
@@ -18,7 +20,7 @@ export default function AuthDetails({ children }: { children: ReactNode }) {
         setAuthUser(user);
       } else {
         setAuthUser(undefined);
-        router.push("login");
+        router.push("../login");
       }
     });
     return () => {

@@ -75,7 +75,7 @@ export default function RootLayout() {
             {loading && <h1 style={{ color: "black" }}>LOADING...</h1>}
             {!loading &&
               value?.docs.map((value, index) => {
-                console.log(value.data());
+                // console.log(value.data());
                 return (
                   <Post
                     id={value.id}

@@ -39,7 +39,7 @@ export default function Home() {
 
   const handleSelectedFileURL = (files: any) => {
     if (files && files[0].size < 10000000) {
-      console.log(files[0], "File uploaded");
+      // console.log(files[0], "File uploaded");
       setURL(files[0]);
     } else {
       console.log("File size too large");
@@ -48,7 +48,7 @@ export default function Home() {
 
   const handleSelectedFileAvatar = (files: any) => {
     if (files && files[0].size < 10000000) {
-      console.log(files[0], "File uploaded");
+      // console.log(files[0], "File uploaded");
       setAvatar(files[0]);
     } else {
       console.log("File size too large");

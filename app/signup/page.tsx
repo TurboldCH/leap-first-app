@@ -1,22 +1,63 @@
 "use client";
 
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, styled } from "@mui/material";
 import Image from "next/image";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseApp } from "../firebase";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import DownloadDoneIcon from "@mui/icons-material/DownloadDone";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-
+  const [profilePic, setProfilePic] = useState<File>();
+  const storage = getStorage(firebaseApp);
   const auth = getAuth(firebaseApp);
+
+  const handleSelectedFileAvatar = (files: any) => {
+    if (files && files[0].size < 10000000) {
+      setProfilePic(files[0]);
+    } else {
+      console.log("File size too large");
+    }
+  };
+
+  const uploadFileToStorage = async () => {
+    const storageRef = ref(storage, `${profilePic} ${Date.now()}`);
+    try {
+      await uploadBytes(storageRef, profilePic!);
+      const downloadProfilePic = await getDownloadURL(
+        ref(storage, profilePic?.name)
+      );
+      await addDoc(collection(getFirestore(firebaseApp), "blog"), {
+        profilePic: downloadProfilePic,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const signUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      await uploadFileToStorage();
       router.push("login");
     } catch (error) {
       alert(error);
@@ -114,6 +155,29 @@ export default function SignUp() {
                   setPassword(event.target.value);
                 }}
               />
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  onChange={(event) => {
+                    handleSelectedFileAvatar(event.target.files);
+                  }}
+                  component="label"
+                  variant="contained"
+                  startIcon={<CloudUploadIcon />}
+                >
+                  Upload Avatar
+                  <VisuallyHiddenInput type="file" />
+                </Button>
+                {profilePic && (
+                  <DownloadDoneIcon style={{ width: "40px", height: "40px" }} />
+                )}
+              </div>
               <Button
                 style={{
                   borderRadius: "4px",

@@ -1,6 +1,6 @@
 import { firebaseApp } from "@/app/firebase";
-import { collection, getFirestore } from "firebase/firestore";
-import { useCollection } from "react-firebase-hooks/firestore";
+import { collection, doc, getFirestore } from "firebase/firestore";
+import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import { SingleComment } from "./singleComment";
 
 export const Comments = ({ postId }: { postId: string }) => {
@@ -10,6 +10,12 @@ export const Comments = ({ postId }: { postId: string }) => {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
+  // const [value, loading, error] = useDocument(
+  //   doc(getFirestore(firebaseApp), "users", ),
+  //   {
+  //     snapshotListenOptions: { includeMetadataChanges: true },
+  //   }
+  // );
 
   return (
     <div>
@@ -20,6 +26,7 @@ export const Comments = ({ postId }: { postId: string }) => {
             <SingleComment
               text={value.data().comment}
               createdBy={value.data().createdBy}
+              profilePic={value.data().profilePic}
               postId={postId}
               commentId={value.id}
             />

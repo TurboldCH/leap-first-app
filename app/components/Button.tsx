@@ -55,26 +55,26 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
       </button>
     );
   } else if (type === "next") {
-    const handleHorizantalScroll = (
-      element: { scrollLeft: number } | null,
-      speed: number | undefined,
-      distance: number,
-      step: number
-    ) => {
-      let scrollAmount = 0;
-      const slideTimer = setInterval(() => {
-        element.scrollLeft += step;
-        scrollAmount += Math.abs(step);
-        if (scrollAmount >= distance) {
-          clearInterval(slideTimer);
-        }
-        if (element.scrollLeft === 0) {
-          setArrowDisable(true);
-        } else {
-          setArrowDisable(false);
-        }
-      }, speed);
-    };
+    // const handleHorizantalScroll = (
+    //   element: { scrollLeft: number } | null,
+    //   speed: number | undefined,
+    //   distance: number,
+    //   step: number
+    // ) => {
+    //   let scrollAmount = 0;
+    //   const slideTimer = setInterval(() => {
+    //     element.scrollLeft += step;
+    //     scrollAmount += Math.abs(step);
+    //     if (scrollAmount >= distance) {
+    //       clearInterval(slideTimer);
+    //     }
+    //     if (element.scrollLeft === 0) {
+    //       setArrowDisable(true);
+    //     } else {
+    //       setArrowDisable(false);
+    //     }
+    //   }, speed);
+    // };
     return (
       <button
         style={{
@@ -87,9 +87,9 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
           width: "165px",
           height: "44px",
         }}
-        onClick={() => {
-          handleHorizantalScroll(elementRef.current, 25, 100, 100);
-        }}
+        // onClick={() => {
+        //   handleHorizantalScroll(elementRef.current, 25, 100, 100);
+        // }}
       >
         {text}
         <svg

@@ -17,11 +17,13 @@ export const SingleComment = ({
   postId,
   commentId,
   createdBy,
+  profilePic,
 }: {
   text: string;
   postId: string;
   commentId: string;
   createdBy: string;
+  profilePic: string;
 }) => {
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => setIsHovering(true);
@@ -51,9 +53,9 @@ export const SingleComment = ({
         onMouseOut={handleMouseOut}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          {user?.profilePic ? (
+          {profilePic ? (
             <Image
-              src={user?.profilePic}
+              src={profilePic}
               alt="Profile picture"
               width={30}
               height={30}
@@ -74,7 +76,7 @@ export const SingleComment = ({
           </div>
         </div>
 
-        {isHovering && (
+        {isHovering && (user?.email === createdBy) && (
           <IconButtonStyle>
             <IconButton aria-label="delete" size="small">
               <DeleteIcon fontSize="inherit" onClick={deleteComment} />

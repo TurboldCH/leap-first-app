@@ -32,7 +32,7 @@ export default function Login() {
   const signIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("..");
+      router.push("/");
     } catch (error) {
       alert(error);
     }
