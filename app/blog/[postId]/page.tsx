@@ -32,7 +32,7 @@ const ContainerStyle = styled("div")({
   paddingBottom: "140px",
 });
 
-export default function postDetail({ params }: { params: any }) {
+export default function Page({ params }: { params: any }) {
   // console.log(params.postId);
   //Blog ID
   const [value, loading, error] = useCollection(

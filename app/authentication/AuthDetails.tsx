@@ -1,10 +1,18 @@
 "use client";
-import { User, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { firebaseApp } from "../firebase";
-import { ReactNode, createContext, useEffect, useState } from "react";
+import {
+  User,
+  UserInfo,
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { ReactNode, createContext, useEffect, useState } from "react";
+import { firebaseApp } from "../firebase";
 
-export const AuthContext = createContext({ user: "", email: "" });
+export const AuthContext = createContext<{
+  user: UserInfo | null;
+}>({ user: null });
 
 export default function AuthDetails({ children }: { children: ReactNode }) {
   const auth = getAuth(firebaseApp);

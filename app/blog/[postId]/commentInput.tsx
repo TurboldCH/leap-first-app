@@ -12,7 +12,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import { firebaseApp } from "@/app/firebase";
-import { useContext, useRef, useState } from "react";
+import { ChangeEventHandler, useContext, useRef, useState } from "react";
 import { AuthContext } from "@/app/authentication/AuthDetails";
 import { useDocument } from "react-firebase-hooks/firestore";
 
@@ -23,17 +23,20 @@ export const CommentInput = ({ postId }: { postId: string }) => {
   const hiddenFileInput = useRef(null);
   const storage = getStorage(firebaseApp);
 
-  const [value, loading, error] = useDocument(doc(db, "users", user?.uid), {
-    snapshotListenOptions: { includeMetadataChanges: true },
-  });
+  const [value, loading, error] = useDocument(
+    doc(db, "users", String(user?.uid)),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
 
-  const handleChange = async (e: { target: { files: string | any[] } }) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
     const image = e.target.files[0];
     const storageRef = ref(storage, `${image?.name}-ProfileImage`);
     try {
       await uploadBytes(storageRef, image!);
       const downloadProfilePic = await getDownloadURL(storageRef);
-      await setDoc(doc(db, "users", user?.uid), {
+      await setDoc(doc(db, "users", String(user?.uid)), {
         profilePic: downloadProfilePic,
       });
     } catch (error) {
@@ -50,7 +53,7 @@ export const CommentInput = ({ postId }: { postId: string }) => {
       await addDoc(collection(db, `blog/${postId}/comments`), {
         comment: comment,
         createdBy: user?.email,
-        profilePic: value?.data().profilePic,
+        profilePic: value?.data()?.profilePic,
       });
       setComment("");
     } catch (error) {
@@ -79,23 +82,17 @@ export const CommentInput = ({ postId }: { postId: string }) => {
         Join the conversation
       </p>
       <div style={{ display: "flex", gap: "15px" }}>
-        {value ? (
-          <Image
-            src={value?.data().profilePic}
-            width={56}
-            height={56}
-            alt={"Commentor"}
-            onClick={changeProfilePic}
-          />
-        ) : (
-          <Image
-            src={"/../login/default.png"}
-            width={56}
-            height={56}
-            alt={"Commentor"}
-            onClick={changeProfilePic}
-          />
-        )}
+        <Image
+          src={
+            value?.data()?.profilePic
+              ? value?.data()?.profilePic
+              : "/../login/default.png"
+          }
+          width={56}
+          height={56}
+          alt={"Commentor"}
+          onClick={changeProfilePic}
+        />
         <input
           type="file"
           onChange={handleChange}
