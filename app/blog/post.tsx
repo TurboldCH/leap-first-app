@@ -15,11 +15,11 @@ const DivStyle = styled("div")({
   boxShadow: "20px 20px 50px grey",
   borderRadius: "30px",
   overflow: "hidden",
-  cursor: "pointer",
+  // cursor: "pointer",
 });
 
 const IconButtonStyle = styled("div")({
-  display: "flex",
+  // display: "flex",
   backgroundColor: "#FFd",
   position: "absolute",
   borderRadius: "50%",
@@ -55,10 +55,9 @@ export const Post = ({
     setIsHovering(false);
   };
 
-  const deleteFile = () => {
+  const deleteFile = async () => {
     try {
-      // e.preventDefault();
-      deleteDoc(doc(db, "blog", id));
+      await deleteDoc(doc(db, "blog", id));
       setIsDiplaying(false);
     } catch (error) {
       alert(error);
@@ -67,40 +66,36 @@ export const Post = ({
 
   return (
     <>
-      {isDisplaying && (
-        <>
-          <DivStyle
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            onClick={(e) => {
-              push(`blog/${id}`);
-            }}
-            id="blog"
-          >
-            {isHovering && (
-              <>
-                <IconButtonStyle>
-                  <IconButton
-                    onClick={(e: { preventDefault: () => void }) => {
-                      deleteFile();
-                      e.preventDefault();
-                    }}
-                    aria-label="delete"
-                    size="small"
-                  >
-                    <DeleteIcon fontSize="inherit" />
-                  </IconButton>
-                </IconButtonStyle>
-              </>
-            )}
-            <Image src={url} alt="Blog" width={370} height={147} />
-            <div style={{ padding: "0 0 19px 34px" }}>
-              <Overview header={header} content={content} />
-              <Avatar url={avatar} name={name} date={date} />
-            </div>
-          </DivStyle>
-        </>
-      )}
+      <DivStyle
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        onClick={() => {
+          push(`blog/${id}`);
+        }}
+        id="blog"
+      >
+        {isHovering && (
+          <>
+            <IconButtonStyle>
+              <IconButton
+                onClick={async (e) => {
+                  e.stopPropagation();
+                  await deleteFile();
+                }}
+                aria-label="delete"
+                size="small"
+              >
+                <DeleteIcon fontSize="inherit" />
+              </IconButton>
+            </IconButtonStyle>
+          </>
+        )}
+        <Image src={url} alt="Blog" width={370} height={147} />
+        <div style={{ padding: "0 0 19px 34px" }}>
+          <Overview header={header} content={content} />
+          <Avatar url={avatar} name={name} date={date} />
+        </div>
+      </DivStyle>
     </>
   );
 };

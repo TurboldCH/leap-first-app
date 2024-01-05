@@ -9,13 +9,6 @@ import { Box, Button, TextField } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useRouter } from "next/navigation";
 
-// const ContainerStyle = styled("div")({
-//   display: "flex",
-//   justifyContent: "center",
-//   margin: "0, auto",
-//   maxWidth: "1440px",
-//   position: "relative",
-// });
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
