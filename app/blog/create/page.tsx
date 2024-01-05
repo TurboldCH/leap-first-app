@@ -144,7 +144,7 @@ export default function Home() {
           <div style={{ display: "flex", gap: "10px" }}>
             <Button
               onChange={(event) => {
-                handleSelectedFileURL(event.target.files);
+                handleSelectedFileURL((event.target as HTMLInputElement).files);
               }}
               component="label"
               variant="contained"
@@ -155,7 +155,9 @@ export default function Home() {
             </Button>
             <Button
               onChange={(event) => {
-                handleSelectedFileAvatar(event.target.files);
+                handleSelectedFileAvatar(
+                  (event.target as HTMLInputElement).files
+                );
               }}
               component="label"
               variant="contained"
@@ -216,7 +218,7 @@ export default function Home() {
             variant="outlined"
             onClick={async () => {
               uploadFileToStorage();
-              // push("/blog");
+              push("/blog");
             }}
           >
             Save

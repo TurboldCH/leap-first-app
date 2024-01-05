@@ -47,11 +47,12 @@ export default function AuthDetails({ children }: { children: ReactNode }) {
       <AuthContext.Provider value={{ user: user }}>
         {children}
       </AuthContext.Provider>
-      {authUser ? (
+      {authUser && (
         <>
           {/* {`Signed in as ${authUser.email}`} */}
           <button
             style={{
+              display: "flex",
               border: "none",
               background: "transparent",
               textDecoration: "underline",
@@ -67,22 +68,6 @@ export default function AuthDetails({ children }: { children: ReactNode }) {
             Sign out
           </button>{" "}
         </>
-      ) : (
-        <p
-          style={{
-            border: "none",
-            background: "transparent",
-            textDecoration: "underline",
-            textDecorationColor: "gray",
-            fontFamily: "'Mulish', sans-serif",
-            fontSize: "16px",
-            fontWeight: "500",
-            lineHeight: "175.7%",
-            color: "#256071",
-          }}
-        >
-          Signed Out
-        </p>
       )}
     </>
   );

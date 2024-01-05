@@ -10,12 +10,6 @@ export const Comments = ({ postId }: { postId: string }) => {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
-  // const [value, loading, error] = useDocument(
-  //   doc(getFirestore(firebaseApp), "users", ),
-  //   {
-  //     snapshotListenOptions: { includeMetadataChanges: true },
-  //   }
-  // );
 
   return (
     <div>

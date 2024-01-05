@@ -49,10 +49,6 @@ export default function Page({ params }: { params: any }) {
       const db = getFirestore(firebaseApp);
       const docRef = doc(db, "blog", params.postId);
       const docSnap = await getDoc(docRef);
-
-      // const commentDocRef = doc(db, `blog/${params.postId}/comments`);
-      // const commentSnap = await getDoc(commentDocRef);
-      // console.log(commentSnap.data());
       setPostdata(docSnap.data());
     };
     fetchDoc();

@@ -20,7 +20,7 @@ export const CommentInput = ({ postId }: { postId: string }) => {
   const [comment, setComment] = useState<string>();
   const db = getFirestore(firebaseApp);
   const { user } = useContext(AuthContext);
-  const hiddenFileInput = useRef(null);
+  const hiddenFileInput = useRef<HTMLInputElement>(null);
   const storage = getStorage(firebaseApp);
 
   const [value, loading, error] = useDocument(
@@ -31,6 +31,7 @@ export const CommentInput = ({ postId }: { postId: string }) => {
   );
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
+    if (!e.target.files) return;
     const image = e.target.files[0];
     const storageRef = ref(storage, `${image?.name}-ProfileImage`);
     try {

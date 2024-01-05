@@ -47,7 +47,6 @@ export default function RootLayout() {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
-  // console.log(value?.docs);
 
   return (
     <AuthDetails>
