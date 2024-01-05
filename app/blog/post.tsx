@@ -55,9 +55,10 @@ export const Post = ({
     setIsHovering(false);
   };
 
-  const deleteFile = async () => {
+  const deleteFile = () => {
     try {
-      await deleteDoc(doc(db, "blog", id));
+      // e.preventDefault();
+      deleteDoc(doc(db, "blog", id));
       setIsDiplaying(false);
     } catch (error) {
       alert(error);
@@ -71,7 +72,7 @@ export const Post = ({
           <DivStyle
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
-            onClick={() => {
+            onClick={(e) => {
               push(`blog/${id}`);
             }}
             id="blog"
@@ -79,8 +80,15 @@ export const Post = ({
             {isHovering && (
               <>
                 <IconButtonStyle>
-                  <IconButton aria-label="delete" size="small">
-                    <DeleteIcon fontSize="inherit" onClick={deleteFile} />
+                  <IconButton
+                    onClick={(e: { preventDefault: () => void }) => {
+                      deleteFile();
+                      e.preventDefault();
+                    }}
+                    aria-label="delete"
+                    size="small"
+                  >
+                    <DeleteIcon fontSize="inherit" />
                   </IconButton>
                 </IconButtonStyle>
               </>

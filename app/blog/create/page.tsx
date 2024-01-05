@@ -7,6 +7,7 @@ import { getDownloadURL, ref, getStorage, uploadBytes } from "firebase/storage";
 import styled from "@emotion/styled";
 import { Box, Button, TextField } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { useRouter } from "next/navigation";
 
 // const ContainerStyle = styled("div")({
 //   display: "flex",
@@ -28,6 +29,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 export default function Home() {
+  const { push } = useRouter();
   const [url, setURL] = useState<File>();
   const [avatar, setAvatar] = useState<File>();
   const [header, setHeader] = useState("");
@@ -39,7 +41,7 @@ export default function Home() {
 
   const handleSelectedFileURL = (files: any) => {
     if (files && files[0].size < 10000000) {
-      // console.log(files[0], "File uploaded");
+      console.log(files[0], "File uploaded");
       setURL(files[0]);
     } else {
       console.log("File size too large");
@@ -48,7 +50,7 @@ export default function Home() {
 
   const handleSelectedFileAvatar = (files: any) => {
     if (files && files[0].size < 10000000) {
-      // console.log(files[0], "File uploaded");
+      console.log(files[0], "File uploaded");
       setAvatar(files[0]);
     } else {
       console.log("File size too large");
@@ -57,13 +59,13 @@ export default function Home() {
 
   const uploadFileToStorage = async () => {
     console.log(url?.name);
-    const storageRef = ref(storage, `${url?.name} ${Date.now()}`);
+    const storageRefURL = ref(storage, `${url?.name} ${Date.now()}`);
+    const storageRefAVATAR = ref(storage, `${avatar?.name} ${Date.now()}`);
     try {
-      await uploadBytes(storageRef, url!);
-      const downloadAvatarURL = await getDownloadURL(
-        ref(storage, avatar?.name)
-      );
-      const downlaodUrl = await getDownloadURL(ref(storage, url?.name));
+      await uploadBytes(storageRefURL, url!);
+      await uploadBytes(storageRefAVATAR, avatar!);
+      const downloadAvatarURL = await getDownloadURL(storageRefAVATAR);
+      const downlaodUrl = await getDownloadURL(storageRefURL);
       await addDoc(collection(db, "blog"), {
         url: downlaodUrl,
         header: header,
@@ -221,7 +223,7 @@ export default function Home() {
             variant="outlined"
             onClick={async () => {
               uploadFileToStorage();
-              alert("Saved Successfully!");
+              // push("/blog");
             }}
           >
             Save
