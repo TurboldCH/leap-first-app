@@ -1,8 +1,19 @@
+import { getAuth, signOut } from "firebase/auth";
 import { useRef, useState } from "react";
+import { firebaseApp } from "../firebase";
 
 export const Button = ({ text, type }: { text: string; type: string }) => {
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
+  const auth = getAuth(firebaseApp);
+  const userSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        alert("SignedOut");
+      })
+      .catch((error) => console.log(error));
+  };
+
   if (type === "grey") {
     return (
       <button
@@ -15,7 +26,9 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
           fontSize: "16px",
           fontWeight: "700",
           lineHeight: "24px",
+          cursor: "pointer",
         }}
+        onClick={userSignOut}
       >
         {text}
       </button>
@@ -54,27 +67,7 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
         {text}
       </button>
     );
-  } else if (type === "next") {
-    // const handleHorizantalScroll = (
-    //   element: { scrollLeft: number } | null,
-    //   speed: number | undefined,
-    //   distance: number,
-    //   step: number
-    // ) => {
-    //   let scrollAmount = 0;
-    //   const slideTimer = setInterval(() => {
-    //     element.scrollLeft += step;
-    //     scrollAmount += Math.abs(step);
-    //     if (scrollAmount >= distance) {
-    //       clearInterval(slideTimer);
-    //     }
-    //     if (element.scrollLeft === 0) {
-    //       setArrowDisable(true);
-    //     } else {
-    //       setArrowDisable(false);
-    //     }
-    //   }, speed);
-    // };
+  } 
     return (
       <button
         style={{

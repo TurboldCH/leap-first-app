@@ -1,5 +1,4 @@
 "use client";
-import { Navigation } from "../../components/Navigation/navigation";
 import { styled } from "@mui/material";
 import { Footer } from "../../Footer/footer";
 import { useCollection } from "react-firebase-hooks/firestore";

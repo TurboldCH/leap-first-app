@@ -47,10 +47,10 @@ export default function AuthDetails({ children }: { children: ReactNode }) {
       <AuthContext.Provider value={{ user: user }}>
         {children}
       </AuthContext.Provider>
-      {authUser && (
+      {/* {authUser && (
         <>
           {/* {`Signed in as ${authUser.email}`} */}
-          <button
+      {/* <button
             style={{
               display: "flex",
               border: "none",
@@ -68,7 +68,7 @@ export default function AuthDetails({ children }: { children: ReactNode }) {
             Sign out
           </button>{" "}
         </>
-      )}
+      )} */}
     </>
   );
 }

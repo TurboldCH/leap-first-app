@@ -7,28 +7,31 @@ import AuthDetails from "@/app/authentication/AuthDetails";
 const auth = getAuth(firebaseApp);
 
 export const Links = ({ color, type }: { color: string; type: string }) => {
+   
   return (
-    <div
-      id="links"
-      style={{ display: "flex", alignItems: "center", gap: "30px" }}
-    >
-      <Link color={color} href={""}>
-        Products
-      </Link>
-      <Link color={color} href={""}>
-        Services
-      </Link>
-      <Link color={color} href={""}>
-        Contact
-      </Link>
-      <AuthDetails children={undefined} />
-      {/* <Link color={color} href={"login"}>
+    <AuthDetails>
+      <div
+        id="links"
+        style={{ display: "flex", alignItems: "center", gap: "30px" }}
+      >
+        <Link color={color} href={""}>
+          Products
+        </Link>
+        <Link color={color} href={""}>
+          Services
+        </Link>
+        <Link color={color} href={""}>
+          Contact
+        </Link>
+        
+        {/* <Link color={color} href={"login"}>
         Log in
       </Link> */}
-      <Link color={color} href={"/blog"}>
-        Blogs
-      </Link>
-      <Button text="Get Access" type={type} />
-    </div>
+        <Link color={color} href={"/blog"}>
+          Blogs
+        </Link>
+        <Button text="Sign Out" type={type} />
+      </div>
+    </AuthDetails>
   );
 };

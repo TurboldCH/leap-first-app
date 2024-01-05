@@ -165,7 +165,9 @@ export default function SignUp() {
               >
                 <Button
                   onChange={(event) => {
-                    handleSelectedFileAvatar(event.target.files);
+                    handleSelectedFileAvatar(
+                      (event.target as HTMLInputElement).files
+                    );
                   }}
                   component="label"
                   variant="contained"
