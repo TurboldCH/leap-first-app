@@ -67,7 +67,7 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
         {text}
       </button>
     );
-  } 
+  } else if (type === "next") {
     return (
       <button
         style={{
@@ -80,9 +80,6 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
           width: "165px",
           height: "44px",
         }}
-        // onClick={() => {
-        //   handleHorizantalScroll(elementRef.current, 25, 100, 100);
-        // }}
       >
         {text}
         <svg
@@ -99,21 +96,22 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
         </svg>
       </button>
     );
+  } else {
+    return (
+      <button
+        style={{
+          borderRadius: "4px",
+          border: "none",
+          backgroundColor: "#0bbef2",
+          padding: "16px 20px",
+          color: "white",
+          fontSize: "16px",
+          fontWeight: "700",
+          lineHeight: "24px",
+        }}
+      >
+        Default
+      </button>
+    );
   }
-  return (
-    <button
-      style={{
-        borderRadius: "4px",
-        border: "none",
-        backgroundColor: "#0bbef2",
-        padding: "16px 20px",
-        color: "white",
-        fontSize: "16px",
-        fontWeight: "700",
-        lineHeight: "24px",
-      }}
-    >
-      Default
-    </button>
-  );
 };
