@@ -29,6 +29,7 @@ export const Content = ({
   gap: string;
 }) => {
   const { user } = useContext(AuthContext);
+  console.log(user?.email);
   return (
     <ContentStyle style={{ gap: gap }}>
       <h1
@@ -53,7 +54,13 @@ export const Content = ({
       >
         {content}
       </p>
-      <p style={{ fontFamily: "'Mulish', sans-serif", fontSize: "18px" }}>
+      <p
+        style={{
+          fontFamily: "'Mulish', sans-serif",
+          fontSize: "18px",
+          fontWeight: "300",
+        }}
+      >
         by {user?.email}
       </p>
     </ContentStyle>

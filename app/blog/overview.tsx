@@ -12,6 +12,7 @@ const HeaderStyle = styled("div")({
   fontWeight: "500",
   color: "#25313C",
   width: "330px",
+  height: "55px",
 });
 const ParagraphStyle = styled("div")({
   fontFamily: "'Mulish', sans-serif",

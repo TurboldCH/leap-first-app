@@ -1,5 +1,8 @@
+import { useRouter } from "next/navigation";
 
 export const Learnmore = () => {
+  const { push } = useRouter();
+
   return (
     <button
       style={{
@@ -13,6 +16,10 @@ export const Learnmore = () => {
         background: "transparent",
         display: "flex",
         alignItems: "center",
+        cursor: "pointer",
+      }}
+      onClick={() => {
+        push("/blog");
       }}
     >
       Learn More

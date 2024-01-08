@@ -91,7 +91,7 @@ export const Post = ({
           </>
         )}
         <Image src={url} alt="Blog" width={370} height={147} />
-        <div style={{ padding: "0 0 19px 34px" }}>
+        <div style={{ padding: "0 20px 19px 34px" }}>
           <Overview header={header} content={content} />
           <Avatar url={avatar} name={name} date={date} />
         </div>

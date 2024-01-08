@@ -34,14 +34,16 @@ export default function RootLayout() {
 
   return (
     <>
-      <DivStyle>
-        <Firstpage />
-        <Secondpage />
-        <Thirdpage />
-        <FourthPage />
-        <FifthPage />
-        <Footer />
-      </DivStyle>
+      <AuthDetails>
+        <DivStyle>
+          <Firstpage />
+          <Secondpage />
+          <Thirdpage />
+          <FourthPage />
+          <FifthPage />
+          <Footer />
+        </DivStyle>
+      </AuthDetails>
     </>
   );
 }

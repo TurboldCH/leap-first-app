@@ -45,7 +45,9 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
           fontSize: "16px",
           fontWeight: "700",
           lineHeight: "24px",
+          cursor: "pointer",
         }}
+        onClick={userSignOut}
       >
         {text}
       </button>
@@ -58,13 +60,20 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
           border: "none",
           backgroundColor: "#0bbef2",
           padding: "16px 20px",
-          color: "white",
-          fontSize: "16px",
-          fontWeight: "700",
-          lineHeight: "24px",
         }}
       >
-        {text}
+        <a
+          style={{
+            textDecoration: "none",
+            color: "white",
+            fontSize: "16px",
+            fontWeight: "700",
+            lineHeight: "24px",
+          }}
+          href="mailto:someone@example.com"
+        >
+          {text}
+        </a>
       </button>
     );
   } else if (type === "next") {
@@ -79,6 +88,7 @@ export const Button = ({ text, type }: { text: string; type: string }) => {
           textAlign: "center",
           width: "165px",
           height: "44px",
+          cursor: "pointer",
         }}
       >
         {text}

@@ -10,6 +10,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { getFirestore, collection } from "firebase/firestore";
 import { Link } from "../components/Navigation/link";
 import AuthDetails from "../authentication/AuthDetails";
+import { useState } from "react";
 
 const DivStyle = styled("div")({
   background: "var(--HP-design-color, #F5F7FA)",
@@ -47,6 +48,7 @@ export default function RootLayout() {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
+  const [startAnimation, setStartAnimation] = useState(true);
 
   return (
     <AuthDetails>
@@ -69,28 +71,35 @@ export default function RootLayout() {
           <Link color={"#000"} href={"/blog/create"}>
             Create your own post
           </Link>
-          <Posts_style>
-            {error && <h1 style={{ color: "black" }}>ERROR...</h1>}
-            {loading && <h1 style={{ color: "black" }}>LOADING...</h1>}
-            {!loading &&
-              value?.docs.map((value, index) => {
-                // console.log(value.data());
-                return (
-                  <Post
-                    id={value.id}
-                    url={""}
-                    avatar={""}
-                    name={""}
-                    content={""}
-                    header={""}
-                    date={""}
-                    {...value.data()}
-                    key={index}
-                  />
-                );
-              })}
-          </Posts_style>
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          {startAnimation && (
+            <Posts_style id="posts">
+              {error && <h1 style={{ color: "black" }}>ERROR...</h1>}
+              {loading && <h1 style={{ color: "black" }}>LOADING...</h1>}
+              {!loading &&
+                value?.docs.map((value, index) => {
+                  // console.log(value.data());
+                  return (
+                    <Post
+                      id={value.id}
+                      url={""}
+                      avatar={""}
+                      name={""}
+                      content={""}
+                      header={""}
+                      date={""}
+                      {...value.data()}
+                      key={index}
+                    />
+                  );
+                })}
+            </Posts_style>
+          )}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <Button type="next" text="Next" />
           </div>
         </ContainerStyle>
