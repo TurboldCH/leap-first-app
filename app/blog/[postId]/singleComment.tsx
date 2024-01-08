@@ -12,6 +12,18 @@ const IconButtonStyle = styled("div")({
   borderRadius: "50%",
 });
 
+const DivStyle = styled("div")({
+  display: "flex",
+  height: "50px",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "700px",
+  "&:hover": {
+    border: "1px black solid",
+    borderRadius: "5px"
+  },
+});
+
 export const SingleComment = ({
   text,
   postId,
@@ -41,17 +53,7 @@ export const SingleComment = ({
   const { user } = useContext(AuthContext);
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          height: "50px",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "700px",
-        }}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >
+      <DivStyle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           {profilePic ? (
             <Image
@@ -76,14 +78,14 @@ export const SingleComment = ({
           </div>
         </div>
 
-        {isHovering && (user?.email === createdBy) && (
+        {isHovering && user?.email === createdBy && (
           <IconButtonStyle>
             <IconButton aria-label="delete" size="small">
               <DeleteIcon fontSize="inherit" onClick={deleteComment} />
             </IconButton>
           </IconButtonStyle>
         )}
-      </div>
+      </DivStyle>
     </div>
   );
 };

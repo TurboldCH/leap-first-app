@@ -14,14 +14,8 @@ export const Links = ({ color, type }: { color: string; type: string }) => {
         id="links"
         style={{ display: "flex", alignItems: "center", gap: "30px" }}
       >
-        <Link color={color} href={""}>
-          Products
-        </Link>
-        <Link color={color} href={""}>
-          Services
-        </Link>
-        <Link color={color} href={""}>
-          Contact
+        <Link color={color} href={"/signup"}>
+          Create An Account
         </Link>
         
         {/* <Link color={color} href={"login"}>

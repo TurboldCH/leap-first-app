@@ -59,6 +59,7 @@ export const Content = ({
           fontFamily: "'Mulish', sans-serif",
           fontSize: "18px",
           fontWeight: "300",
+          color: contentColor,
         }}
       >
         by {user?.email}

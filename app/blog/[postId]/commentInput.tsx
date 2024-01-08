@@ -84,6 +84,7 @@ export const CommentInput = ({ postId }: { postId: string }) => {
       </p>
       <div style={{ display: "flex", gap: "15px" }}>
         <Image
+          style={{ cursor: "pointer" }}
           src={
             value?.data()?.profilePic
               ? value?.data()?.profilePic
