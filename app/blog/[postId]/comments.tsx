@@ -1,6 +1,6 @@
 import { firebaseApp } from "@/app/firebase";
-import { collection, doc, getFirestore } from "firebase/firestore";
-import { useCollection, useDocument } from "react-firebase-hooks/firestore";
+import { collection, getFirestore } from "firebase/firestore";
+import { useCollection, } from "react-firebase-hooks/firestore";
 import { SingleComment } from "./singleComment";
 
 export const Comments = ({ postId }: { postId: string }) => {
